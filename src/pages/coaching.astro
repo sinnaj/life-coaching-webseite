@@ -1,0 +1,228 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import HeroSection from "../components/HeroSection.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+
+const title = "Online Coaching Angebote | Life Coaching, Raucherentwöhnung, Stressbewältigung";
+const description = "Alle meine Coaching-Programme im Überblick. Von Life Coaching bis Raucherentwöhnung – online, individuell, psychologisch fundiert.";
+const toBase = (path: string) => {
+  const base = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  return `${base}${path.replace(/^\/+/, "")}`;
+};
+---
+
+<Layout {title} {description}>
+  <Header currentPage="coaching" />
+
+  <main class="page-content">
+    <!-- Hero Section -->
+    <HeroSection
+      title="Meine Coaching-Angebote"
+      description="Jedes Angebot ist speziell entwickelt, um Sie bei einem konkreten Anliegen zu unterstützen. Alle Programme können online via Zoom durchgeführt werden und sind auf Ihre persönliche Situation abgestimmt."
+      bgColor="dark"
+    />
+
+    <!-- Services Grid -->
+    <section class="section container mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-spacing-lg">
+        <!-- Service 1: Life Coaching -->
+        <div class="bg-white border-2 border-primary-light rounded-lg overflow-hidden hover:shadow-lg transition-all">
+          <div class="p-spacing-lg border-b-2 border-primary-light">
+            <h3 class="text-h3 font-bold text-primary-dark mb-spacing-sm">Life Coaching</h3>
+            <p class="text-body text-text-secondary">
+              Persönlichkeitsentwicklung, emotionale Balance und nachhaltige Veränderung.
+            </p>
+          </div>
+          <div class="p-spacing-lg">
+            <div class="space-y-spacing-md mb-spacing-lg">
+              <p class="text-sm"><strong>Dauer:</strong> 60 Minuten</p>
+              <p class="text-h4 font-bold text-accent-blue">100 €</p>
+            </div>
+            <a
+              href={toBase("/coaching/life-coaching")}
+              class="text-accent-blue font-semibold hover:text-accent-blue-dark transition-colors"
+            >
+              Mehr erfahren →
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 2: Raucherentwöhnung -->
+        <div class="bg-white border-2 border-primary-light rounded-lg overflow-hidden hover:shadow-lg transition-all">
+          <div class="p-spacing-lg border-b-2 border-primary-light">
+            <h3 class="text-h3 font-bold text-primary-dark mb-spacing-sm">Raucherentwöhnung</h3>
+            <p class="text-body text-text-secondary">
+              3-teiliges Intensivprogramm mit Verhaltenstherapie, Mental-Coaching und Hypnose.
+            </p>
+          </div>
+          <div class="p-spacing-lg">
+            <div class="space-y-spacing-md mb-spacing-lg">
+              <p class="text-sm"><strong>Dauer:</strong> 3 Sitzungen (5,5 Stunden)</p>
+              <p class="text-h4 font-bold text-accent-blue">550 €</p>
+            </div>
+            <a
+              href={toBase("/coaching/raucherentwohnung")}
+              class="text-accent-blue font-semibold hover:text-accent-blue-dark transition-colors"
+            >
+              Mehr erfahren →
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 3: Alkohol Selbstbestimmt -->
+        <div class="bg-white border-2 border-primary-light rounded-lg overflow-hidden hover:shadow-lg transition-all">
+          <div class="p-spacing-lg border-b-2 border-primary-light">
+            <h3 class="text-h3 font-bold text-primary-dark mb-spacing-sm">
+              Alkohol & Selbstbestimmung
+            </h3>
+            <p class="text-body text-text-secondary">
+              Bewusst weniger trinken, ohne komplett zu verzichten. Individuelle Strategien.
+            </p>
+          </div>
+          <div class="p-spacing-lg">
+            <div class="space-y-spacing-md mb-spacing-lg">
+              <p class="text-sm"><strong>Dauer:</strong> 1 + 6 Sitzungen</p>
+              <p class="text-h4 font-bold text-accent-blue">100 € / Sitzung</p>
+            </div>
+            <a
+              href={toBase("/coaching/alkohol-selbstbestimmt")}
+              class="text-accent-blue font-semibold hover:text-accent-blue-dark transition-colors"
+            >
+              Mehr erfahren →
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 4: Stressbewältigung -->
+        <div class="bg-white border-2 border-primary-light rounded-lg overflow-hidden hover:shadow-lg transition-all">
+          <div class="p-spacing-lg border-b-2 border-primary-light">
+            <h3 class="text-h3 font-bold text-primary-dark mb-spacing-sm">Stressbewältigung</h3>
+            <p class="text-body text-text-secondary">
+              Wissenschaftlich fundiertes Programm nach Prof. Kaluza. Stressmuster erkennen.
+            </p>
+          </div>
+          <div class="p-spacing-lg">
+            <div class="space-y-spacing-md mb-spacing-lg">
+              <p class="text-sm"><strong>Dauer:</strong> 6 Sitzungen à 60 Min.</p>
+              <p class="text-h4 font-bold text-accent-blue">600 €</p>
+            </div>
+            <a
+              href={toBase("/coaching/stressbewaeltigung")}
+              class="text-accent-blue font-semibold hover:text-accent-blue-dark transition-colors"
+            >
+              Mehr erfahren →
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 5: Autogenes Training -->
+        <div class="bg-white border-2 border-primary-light rounded-lg overflow-hidden hover:shadow-lg transition-all">
+          <div class="p-spacing-lg border-b-2 border-primary-light">
+            <h3 class="text-h3 font-bold text-primary-dark mb-spacing-sm">Autogenes Training</h3>
+            <p class="text-body text-text-secondary">
+              Schnell zur Ruhe kommen mit einfachen Formeln und mentalen Bildern.
+            </p>
+          </div>
+          <div class="p-spacing-lg">
+            <div class="space-y-spacing-md mb-spacing-lg">
+              <p class="text-sm"><strong>Dauer:</strong> 4 Sitzungen à 45 Min.</p>
+              <p class="text-h4 font-bold text-accent-blue">280 €</p>
+            </div>
+            <a
+              href={toBase("/coaching/autogenes-training")}
+              class="text-accent-blue font-semibold hover:text-accent-blue-dark transition-colors"
+            >
+              Mehr erfahren →
+            </a>
+          </div>
+        </div>
+
+        <!-- CTA Card -->
+        <div class="bg-accent-blue text-white rounded-lg p-spacing-lg flex flex-col justify-center">
+          <h3 class="text-h3 font-bold mb-spacing-md">Unsicher, welches Angebot zu Ihnen passt?</h3>
+          <p class="text-body mb-spacing-lg opacity-95">
+            In einem kostenlosen Erstgespräch klären wir gemeinsam, welches Programm ideal ist.
+          </p>
+          <a
+            href={toBase("/kontakt")}
+            class="inline-block px-spacing-lg py-spacing-md bg-white text-accent-blue font-semibold rounded hover:bg-accent-gray transition-colors text-center"
+          >
+            Termin vereinbaren
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section section-alt container mx-auto">
+      <h2 class="text-h2 font-bold mb-spacing-xl">Häufig gestellte Fragen</h2>
+      
+      <div class="max-w-3xl space-y-spacing-lg">
+        <div>
+          <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Wie lange dauert eine typische Coaching-Serie?</h3>
+          <p class="text-body text-text-secondary">
+            Das hängt von Ihrem Anliegen ab. Manche Programme sind in 4 Sitzungen strukturiert (Autogenes Training), andere brauchen 6 Sitzungen (Stressbewältigung). Life Coaching können Sie individuell gestalten – ob 3 oder 10 Sitzungen. Wir schauen gemeinsam, was sinnvoll ist.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">
+            Ist das Coaching auch für Anfänger geeignet?
+          </h3>
+          <p class="text-body text-text-secondary">
+            Ja, absolut! Sie müssen keine Vorkenntnisse haben. Alle Programme sind so aufgebaut, dass Anfänger und Menschen mit Coaching-Erfahrung profitieren. Ich passe alles an Ihren aktuellen Stand an.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">
+            Fallen Kosten an, wenn ich im Coaching absagen muss?
+          </h3>
+          <p class="text-body text-text-secondary">
+            Abwesenheit oder Verschiebung: Bitte geben Sie mindestens 7 Tage vorher Bescheid. Bei kurzfristigen Absagen kann eine Bearbeitungsgebühr anfallen. Besprechen Sie gerne die genauen Bedingungen beim kostenlosen Erstgespräch.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">
+            Kann ich das Coaching unterbrechen?
+          </h3>
+          <p class="text-body text-text-secondary">
+            Ja, Leben passiert! Sagen Sie gerne Bescheid, wenn Sie eine Pause machen möchten. Wir können flexibel eine Unterbrechung vereinbaren und später wieder anknüpfen.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">
+            Gibt es eine Geld-zurück-Garantie?
+          </h3>
+          <p class="text-body text-text-secondary">
+            Nein, aber im kostenlosen Erstgespräch werden wir gemeinsam klären, ob die Passung stimmt. Falls Sie danach merken, dass es nicht die richtige Wahl war, können wir das gemeinsam besprechen.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section bg-primary-dark text-white container mx-auto">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Bereit, den ersten Schritt zu machen?</h2>
+        <p class="text-body text-accent-gray mb-spacing-lg">
+          Vereinbaren Sie ein kostenfreies Erstgespräch und lassen Sie uns gemeinsam schauen, wie wir zusammenpassen.
+        </p>
+        <a
+          href={toBase("/kontakt")}
+          class="inline-block px-spacing-lg py-spacing-md bg-accent-blue text-white font-semibold rounded hover:bg-accent-blue-dark transition-colors"
+        >
+          Termin anfragen
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

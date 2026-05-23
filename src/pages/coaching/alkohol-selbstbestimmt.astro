@@ -1,0 +1,120 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import HeroSection from "../../components/HeroSection.astro";
+import ContactForm from "../../components/ContactForm.astro";
+
+const title = "Alkohol selbstbestimmt – Kontrolliert trinken | Mental-Coaching";
+const description = "Bewusst weniger trinken, ohne komplett zu verzichten. Psychologisch fundiertes Coaching für mehr Selbstbestimmung.";
+---
+
+<Layout {title} {description}>
+  <Header currentPage="coaching" />
+
+  <main class="page-content">
+    <HeroSection
+      title="Alkohol & Selbstbestimmung"
+      subtitle="Kontrolliert trinken"
+      description="Selbstbestimmt und bewusst weniger trinken, ohne komplett zu verzichten. Individuelle Strategien für mehr Autonomie und Wohlbefinden."
+      ctaText="Termin anfragen"
+      ctaHref="/kontakt"
+      bgColor="dark"
+    />
+
+    <section class="section container mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Was bedeutet kontrolliertes Trinken?</h2>
+        <p class="text-body text-text-secondary mb-spacing-lg">
+          Dies ist nicht Abstinenz, sondern ein bewusster, selbstbestimmter Umgang mit Alkohol. Es geht darum, Ihre Beziehung zum Alkohol zu verstehen und zu gestalten – auf eine Weise, die zu Ihrem Leben passt.
+        </p>
+
+        <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Der Fokus liegt auf:</h3>
+        <div class="space-y-spacing-md bg-primary-light p-spacing-lg rounded-lg mb-spacing-lg">
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue font-bold">•</span>
+            <p class="text-body">Verständnis für Ihre Trinkmuster und Auslöser</p>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue font-bold">•</span>
+            <p class="text-body">Bewusster Umgang mit Alkohol statt automatisches Verhalten</p>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue font-bold">•</span>
+            <p class="text-body">Strategien für schwierige Situationen</p>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue font-bold">•</span>
+            <p class="text-body">Innere Ressourcen stärken für mehr Selbstkontrolle</p>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue font-bold">•</span>
+            <p class="text-body">Neue, gesunde Bewältigungsstrategien</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt container mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Die Programmstruktur</h2>
+        
+        <div class="space-y-spacing-lg mb-spacing-lg">
+          <div class="bg-white p-spacing-lg rounded-lg border-l-4 border-accent-blue">
+            <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">
+              1. Sitzung: Analyse &amp; Zielklärung
+            </h3>
+            <p class="text-body text-text-secondary">
+              Wir schauen gemeinsam auf Ihre aktuelle Situation, Ihre Trinkmuster und Ihre Ziele. – Was möchten Sie konkret verändern?
+            </p>
+          </div>
+
+          <div class="bg-white p-spacing-lg rounded-lg border-l-4 border-accent-blue">
+            <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">
+              Sitzungen 2-7: Coaching &amp; Strategieentwicklung
+            </h3>
+            <p class="text-body text-text-secondary">
+              Wir arbeiten an konkreten Strategien, identifizieren Ihre Ressourcen und entwickeln Wege, bewusster mit Alkohol umzugehen. Regelmäßiges Coaching gibt Ihnen Sicherheit und Unterstützung.
+            </p>
+          </div>
+        </div>
+
+        <p class="text-body text-text-secondary bg-accent-light p-spacing-lg rounded-lg">
+          <strong>Gesamt:</strong> 1 + 6 Sitzungen à 60 Minuten, flexibel über 8-12 Wochen verteilt. Sie entscheiden das Tempo!
+        </p>
+      </div>
+    </section>
+
+    <section class="section container mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Preise</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-spacing-lg">
+          <div class="bg-accent-blue text-white p-spacing-lg rounded-lg">
+            <p class="text-h5 font-bold mb-spacing-sm">Einzelne Sitzung</p>
+            <p class="text-h3 font-bold">100 €</p>
+            <p class="text-sm opacity-90">pro 60 Min. Coaching</p>
+          </div>
+
+          <div class="bg-accent-light text-primary-dark p-spacing-lg rounded-lg border-2 border-accent-blue">
+            <p class="text-h5 font-bold mb-spacing-sm">Komplettpaket</p>
+            <p class="text-h3 font-bold">730 €</p>
+            <p class="text-sm">7 Sitzungen (ca. 5% Rabatt)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt container mx-auto">
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg text-center">Bereit für einen bewussteren Umgang?</h2>
+        <p class="text-center text-body text-text-secondary mb-spacing-xl">
+          Vereinbaren Sie ein kostenfreies Erstgespräch.
+        </p>
+        <ContactForm />
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

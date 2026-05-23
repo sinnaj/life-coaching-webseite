@@ -1,0 +1,96 @@
+---
+// Header component with sticky positioning, responsive nav, and mobile menu toggle
+export interface Props {
+  currentPage?: string;
+}
+
+const { currentPage = "home" } = Astro.props;
+const toBase = (path: string) => {
+  const base = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  return `${base}${path.replace(/^\/+/, "")}`;
+};
+
+const navItems = [
+  { label: "Coaching", href: toBase("/coaching") },
+  { label: "Profil", href: toBase("/profil") },
+  { label: "Motivation", href: toBase("/motivation") },
+  { label: "Kontakt", href: toBase("/kontakt") },
+];
+---
+
+<header class="sticky top-0 z-50 bg-primary-dark text-white shadow-md">
+  <nav class="container mx-auto px-spacing-md py-spacing-sm flex items-center justify-between">
+    <!-- Logo -->
+    <a href={toBase("/")} class="text-h3 font-bold hover:text-accent-blue transition-colors">
+      CM Coaching
+    </a>
+
+    <!-- Desktop Navigation -->
+    <div class="hidden md:flex items-center gap-spacing-lg">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class={`text-body transition-colors ${
+            currentPage === item.label.toLowerCase()
+              ? "text-accent-blue font-semibold"
+              : "hover:text-accent-blue"
+          }`}
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+
+    <!-- CTA Button -->
+    <a
+      href={toBase("/kontakt")}
+      class="hidden md:inline-block px-spacing-md py-spacing-sm bg-accent-blue text-white rounded font-semibold hover:bg-accent-blue-dark transition-colors"
+    >
+      Termin buchen
+    </a>
+
+    <!-- Mobile Menu Toggle (hamburger) -->
+    <button
+      class="md:hidden flex flex-col gap-1.5 w-8 h-8 focus:outline-none"
+      id="mobile-menu-toggle"
+      aria-label="Menu toggle"
+    >
+      <span class="h-0.5 w-full bg-white transition-transform"></span>
+      <span class="h-0.5 w-full bg-white transition-transform"></span>
+      <span class="h-0.5 w-full bg-white transition-transform"></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu (hidden by default) -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-primary-dark border-t border-primary-light px-spacing-md py-spacing-md"
+  >
+    <div class="flex flex-col gap-spacing-md">
+      {navItems.map((item) => (
+        <a href={item.href} class="text-white hover:text-accent-blue transition-colors">
+          {item.label}
+        </a>
+      ))}
+      <a
+        href={toBase("/kontakt")}
+        class="mt-spacing-md px-spacing-md py-spacing-sm bg-accent-blue text-white rounded font-semibold hover:bg-accent-blue-dark transition-colors text-center"
+      >
+        Termin buchen
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("mobile-menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+
+  if (toggle && menu) {
+    toggle.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  }
+</script>

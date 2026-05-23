@@ -1,0 +1,44 @@
+---
+// Service Card component - used in services grid on homepage and coaching page
+export interface Props {
+  title: string;
+  description: string;
+  icon?: string;
+  href: string;
+  highlight?: boolean;
+}
+
+const { title, description, icon, href, highlight = false } = Astro.props;
+---
+
+<a
+  href={href}
+  class={`
+    block p-spacing-lg rounded-lg transition-all duration-300 hover:shadow-lg
+    ${
+      highlight
+        ? "bg-accent-blue text-white hover:bg-accent-blue-dark"
+        : "bg-white border-2 border-primary-light hover:border-accent-blue"
+    }
+  `}
+>
+  {icon && (
+    <div class={`text-h2 mb-spacing-md ${highlight ? "text-white" : "text-accent-blue"}`}>
+      {icon}
+    </div>
+  )}
+
+  <h3 class={`text-h4 font-bold mb-spacing-md ${highlight ? "text-white" : "text-primary-dark"}`}>
+    {title}
+  </h3>
+
+  <p class={`text-body ${highlight ? "text-white opacity-95" : "text-text-secondary"}`}>
+    {description}
+  </p>
+
+  <div class={`mt-spacing-lg pt-spacing-md border-t ${highlight ? "border-white opacity-30" : "border-primary-light"}`}>
+    <span class={`text-sm font-semibold ${highlight ? "text-white" : "text-accent-blue"}`}>
+      Mehr erfahren →
+    </span>
+  </div>
+</a>

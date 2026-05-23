@@ -1,0 +1,77 @@
+---
+// Hero Section component - used for hero banners with heading, text, and CTA
+export interface Props {
+  title: string;
+  subtitle?: string;
+  description?: string;
+  ctaText?: string;
+  ctaHref?: string;
+  bgColor?: "dark" | "light";
+  image?: string;
+}
+
+const {
+  title,
+  subtitle,
+  description,
+  ctaText,
+  ctaHref = "/kontakt",
+  bgColor = "dark",
+  image,
+} = Astro.props;
+
+const toBase = (path: string) => {
+  const base = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  return `${base}${path.replace(/^\/+/, "")}`;
+};
+const resolvedCtaHref = ctaHref.startsWith("/") ? toBase(ctaHref) : ctaHref;
+
+const bgClasses = bgColor === "dark" 
+  ? "bg-primary-dark text-white" 
+  : "bg-accent-light text-primary-dark";
+---
+
+<section class={`${bgClasses} py-spacing-3xl px-spacing-md ${image ? "relative overflow-hidden" : ""}`}>
+  {image && (
+    <div class="absolute inset-0 opacity-10 bg-cover bg-center" style={`background-image: url('${image}')`}></div>
+  )}
+
+  <div class="container mx-auto relative z-10">
+    <div class="max-w-2xl">
+      {subtitle && (
+        <p class={`text-sm font-semibold mb-spacing-md uppercase tracking-wider ${
+          bgColor === "dark" ? "text-accent-blue" : "text-accent-blue"
+        }`}>
+          {subtitle}
+        </p>
+      )}
+
+      <h1 class="text-h1 font-bold mb-spacing-lg">
+        {title}
+      </h1>
+
+      {description && (
+        <p class={`text-h5 mb-spacing-lg leading-relaxed ${
+          bgColor === "dark" ? "text-accent-gray" : "text-text-secondary"
+        }`}>
+          {description}
+        </p>
+      )}
+
+      {ctaText && ctaHref && (
+        <a
+          href={resolvedCtaHref}
+          class={`inline-block px-spacing-lg py-spacing-md font-semibold rounded transition-all duration-200 ${
+            bgColor === "dark"
+              ? "bg-accent-blue text-white hover:bg-accent-blue-dark"
+              : "bg-primary-dark text-white hover:bg-primary-light"
+          }`}
+        >
+          {ctaText}
+        </a>
+      )}
+    </div>
+  </div>
+</section>

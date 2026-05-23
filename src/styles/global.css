@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Typography */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-page-bg text-text-primary font-sans;
+  }
+
+  h1 {
+    @apply text-h1 font-bold;
+  }
+
+  h2 {
+    @apply text-h2 font-bold;
+  }
+
+  h3 {
+    @apply text-h3 font-bold;
+  }
+
+  h4 {
+    @apply text-h4 font-semibold;
+  }
+
+  h5 {
+    @apply text-h5 font-semibold;
+  }
+
+  p {
+    @apply text-body leading-relaxed;
+  }
+
+  a {
+    @apply transition-colors;
+  }
+}
+
+/* Container utility */
+@layer components {
+  .container {
+    @apply max-w-6xl mx-auto;
+  }
+
+  /* Focus states for accessibility */
+  input:focus,
+  textarea:focus,
+  button:focus {
+    @apply outline-none;
+  }
+
+  input:focus-visible,
+  textarea:focus-visible {
+    @apply ring-2 ring-accent-blue ring-offset-2;
+  }
+
+  button:focus-visible {
+    @apply ring-2 ring-offset-2;
+  }
+
+  /* Forms */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea,
+  select {
+    @apply border-2 border-primary-light rounded transition-colors;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="tel"]:focus,
+  textarea:focus,
+  select:focus {
+    @apply border-accent-blue;
+  }
+
+  /* Buttons */
+  button {
+    @apply cursor-pointer;
+  }
+
+  /* Links */
+  a {
+    @apply text-accent-blue hover:underline;
+  }
+
+  /* Lists */
+  ul {
+    @apply space-y-spacing-sm;
+  }
+
+  li {
+    @apply leading-relaxed;
+  }
+
+  /* Utility Classes */
+  .page-container {
+    @apply min-h-screen flex flex-col;
+  }
+
+  .page-content {
+    @apply flex-grow;
+  }
+
+  .section {
+    @apply py-spacing-2xl px-spacing-md;
+  }
+
+  .section-alt {
+    @apply bg-accent-light;
+  }
+}
+
+/* Animations */
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+}
+
+/* Responsive Images */
+img {
+  @apply max-w-full h-auto;
+}
+
+/* Print styles */
+@media print {
+  body {
+    @apply bg-white;
+  }
+
+  a {
+    @apply no-underline;
+  }
+
+  a[href]::after {
+    content: "";
+  }
+}

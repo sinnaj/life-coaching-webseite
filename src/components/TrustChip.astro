@@ -1,0 +1,14 @@
+---
+// Trust Chip component - small badge for trust strip
+export interface Props {
+  text: string;
+  icon?: string;
+}
+
+const { text, icon } = Astro.props;
+---
+
+<div class="inline-flex items-center gap-spacing-sm bg-white px-spacing-md py-spacing-sm rounded-full border border-primary-light shadow-sm hover:shadow-md transition-shadow">
+  {icon && <span class="text-h5">{icon}</span>}
+  <span class="text-sm font-medium text-primary-dark">{text}</span>
+</div>

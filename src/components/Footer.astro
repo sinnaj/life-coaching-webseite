@@ -1,0 +1,122 @@
+---
+// Footer component with multiple columns, legal links, and contact info
+const toBase = (path: string) => {
+  const base = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  return `${base}${path.replace(/^\/+/, "")}`;
+};
+---
+
+<footer class="bg-primary-dark text-white mt-spacing-3xl">
+  <div class="container mx-auto px-spacing-md py-spacing-3xl">
+    <!-- Main Footer Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-spacing-lg mb-spacing-2xl">
+      <!-- Column 1: Brand Info -->
+      <div>
+        <h3 class="text-h4 font-bold mb-spacing-md">CM Coaching</h3>
+        <p class="text-sm text-accent-gray mb-spacing-md">
+          Psychologisch fundiertes Life Coaching & Mental-Coaching Online
+        </p>
+        <p class="text-sm text-accent-gray">
+          Unterstützung bei Veränderungsprozessen mit modernen Coaching-Methoden
+        </p>
+      </div>
+
+      <!-- Column 2: Coaching Services -->
+      <div>
+        <h4 class="text-h5 font-semibold mb-spacing-md">Coaching</h4>
+        <ul class="space-y-spacing-sm text-sm">
+          <li>
+            <a href={toBase("/coaching/life-coaching")} class="hover:text-accent-blue transition-colors">
+              Life Coaching
+            </a>
+          </li>
+          <li>
+            <a href={toBase("/coaching/raucherentwohnung")} class="hover:text-accent-blue transition-colors">
+              Raucherentwöhnung
+            </a>
+          </li>
+          <li>
+            <a href={toBase("/coaching/alkohol-selbstbestimmt")} class="hover:text-accent-blue transition-colors">
+              Alkohol & Selbstbestimmung
+            </a>
+          </li>
+          <li>
+            <a href={toBase("/coaching/stressbewaeltigung")} class="hover:text-accent-blue transition-colors">
+              Stressbewältigung
+            </a>
+          </li>
+          <li>
+            <a href={toBase("/coaching/autogenes-training")} class="hover:text-accent-blue transition-colors">
+              Autogenes Training
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 3: About & Motivation -->
+      <div>
+        <h4 class="text-h5 font-semibold mb-spacing-md">Über mich</h4>
+        <ul class="space-y-spacing-sm text-sm">
+          <li>
+            <a href={toBase("/profil")} class="hover:text-accent-blue transition-colors">
+              Mein Profil
+            </a>
+          </li>
+          <li>
+            <a href={toBase("/motivation")} class="hover:text-accent-blue transition-colors">
+              Meine Motivation
+            </a>
+          </li>
+          <li>
+            <a href={toBase("/kontakt")} class="hover:text-accent-blue transition-colors">
+              Kontakt
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Legal -->
+      <div>
+        <h4 class="text-h5 font-semibold mb-spacing-md">Rechtliches</h4>
+        <ul class="space-y-spacing-sm text-sm">
+          <li>
+            <a href={toBase("/impressum")} class="hover:text-accent-blue transition-colors">
+              Impressum
+            </a>
+          </li>
+          <li>
+            <a href={toBase("/datenschutz")} class="hover:text-accent-blue transition-colors">
+              Datenschutz
+            </a>
+          </li>
+          <li>
+            <a href={toBase("/agb")} class="hover:text-accent-blue transition-colors">
+              AGB
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom: Copyright & Contact -->
+    <div class="border-t border-primary-light pt-spacing-lg flex flex-col md:flex-row justify-between items-start md:items-center gap-spacing-md">
+      <div class="text-xs text-accent-gray">
+        &copy; 2024 Christiane Meik Coaching. Alle Rechte vorbehalten.
+      </div>
+      <div class="text-xs text-accent-gray space-y-spacing-sm">
+        <p>
+          <a href="mailto:contact@example.com" class="hover:text-accent-blue transition-colors">
+            contact@example.com
+          </a>
+        </p>
+        <p>
+          <a href="tel:+49123456789" class="hover:text-accent-blue transition-colors">
+            +49 (0) 123 456789
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

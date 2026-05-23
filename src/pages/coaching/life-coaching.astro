@@ -1,0 +1,234 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import HeroSection from "../../components/HeroSection.astro";
+import Button from "../../components/Button.astro";
+import ContactForm from "../../components/ContactForm.astro";
+
+const title = "Life Coaching Online | Persönlichkeitsentwicklung & Lebensqualität";
+const description = "Psychologisch fundiertes Life Coaching für Persönlichkeitsentwicklung, Selbstvertrauen und emotionale Balance. Online und individuell.";
+---
+
+<Layout {title} {description}>
+  <Header currentPage="coaching" />
+
+  <main class="page-content">
+    <!-- Hero Section -->
+    <HeroSection
+      title="Life Coaching – Deine persönliche Entwicklung"
+      subtitle="Persönlichkeitsentwicklung"
+      description="Mehr Selbstvertrauen, emotionale Balance und bewusste Lebensgestaltung. Gemeinsam arbeiten wir an den Themen, die Ihnen wichtig sind – individuell, lösungsorientiert und empathisch."
+      ctaText="Termin anfragen"
+      ctaHref="/kontakt"
+      bgColor="dark"
+    />
+
+    <!-- What This Coaching Is -->
+    <section class="section container mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Worum geht es?</h2>
+        
+        <p class="text-body text-text-secondary mb-spacing-lg">
+          Life Coaching unterstützt Sie bei der persönlichen Entwicklung und hilft Ihnen, positive, nachhaltige Veränderungen zu erreichen.
+        </p>
+
+        <div class="bg-accent-light p-spacing-lg rounded-lg mb-spacing-lg">
+          <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Der Fokus liegt auf:</h3>
+          <ul class="space-y-spacing-md">
+            <li class="flex gap-spacing-md items-start">
+              <span class="text-accent-blue font-bold">•</span>
+              <span class="text-body">Mehr Selbstwertgefühl und Selbstvertrauen</span>
+            </li>
+            <li class="flex gap-spacing-md items-start">
+              <span class="text-accent-blue font-bold">•</span>
+              <span class="text-body">Emotionale Balance und innere Stabilität</span>
+            </li>
+            <li class="flex gap-spacing-md items-start">
+              <span class="text-accent-blue font-bold">•</span>
+              <span class="text-body">Gesunde Gewohnheiten und Routinen</span>
+            </li>
+            <li class="flex gap-spacing-md items-start">
+              <span class="text-accent-blue font-bold">•</span>
+              <span class="text-body">Bewusster Umgang mit Stress und Herausforderungen</span>
+            </li>
+            <li class="flex gap-spacing-md items-start">
+              <span class="text-accent-blue font-bold">•</span>
+              <span class="text-body">Klare Ziele und konkrete Handlungsschritte</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-spacing-lg rounded-r-lg">
+          <p class="text-sm text-text-secondary">
+            <strong>Wichtig:</strong> Das Coaching ersetzt keine Psychotherapie, bietet aber wertvolle Unterstützung für persönliches Wachstum.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who This Is For -->
+    <section class="section section-alt container mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Für wen ist dieses Coaching?</h2>
+        
+        <p class="text-body text-text-secondary mb-spacing-lg">
+          Dieses Angebot richtet sich an Menschen, die:
+        </p>
+
+        <div class="space-y-spacing-md bg-white p-spacing-lg rounded-lg mb-spacing-lg">
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue font-bold text-h4">✓</span>
+            <span class="text-body">An sich selbst arbeiten und wachsen möchten</span>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue font-bold text-h4">✓</span>
+            <span class="text-body">Ihre Lebensqualität verbessern wollen</span>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue font-bold text-h4">✓</span>
+            <span class="text-body">Neue Perspektiven und Strategien benötigen</span>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue font-bold text-h4">✓</span>
+            <span class="text-body">Mit Stress, Unsicherheit oder Unzufriedenheit umgehen</span>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue font-bold text-h4">✓</span>
+            <span class="text-body">Ihre Stärken und Ressourcen entdecken möchten</span>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue font-bold text-h4">✓</span>
+            <span class="text-body">Konkrete, umsetzbare Veränderungen anstreben</span>
+          </div>
+        </div>
+
+        <p class="text-body text-text-secondary">
+          Sie müssen nicht perfekt sein oder eine schwerwiegende Krise haben. Es geht um kleine und große Schritte zu mehr Klarheit und Wohlbefinden.
+        </p>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section container mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg">So läuft das Coaching ab</h2>
+        
+        <p class="text-body text-text-secondary mb-spacing-lg">
+          Im Coaching schauen wir gemeinsam auf Ihre aktuelle Situation und Ihre Ziele. Ich begleite Sie dabei, Ihre persönlichen Ressourcen zu entdecken und konkrete Strategien für den Alltag zu entwickeln.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-spacing-lg mb-spacing-lg">
+          <div class="bg-primary-light p-spacing-lg rounded-lg">
+            <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Lösungsorientiert</h3>
+            <p class="text-body text-text-secondary">Fokus auf Ziele und konkrete Lösungen</p>
+          </div>
+          <div class="bg-primary-light p-spacing-lg rounded-lg">
+            <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Empathisch</h3>
+            <p class="text-body text-text-secondary">Wertschätzung und echtes Verständnis</p>
+          </div>
+          <div class="bg-primary-light p-spacing-lg rounded-lg">
+            <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Alltagstauglich</h3>
+            <p class="text-body text-text-secondary">Praktische Methoden, die sich umsetzen lassen</p>
+          </div>
+          <div class="bg-primary-light p-spacing-lg rounded-lg">
+            <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Individuell</h3>
+            <p class="text-body text-text-secondary">Auf Ihre persönliche Situation abgestimmt</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Methods & Approach -->
+    <section class="section section-alt container mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Mein Ansatz</h2>
+        
+        <p class="text-body text-text-secondary mb-spacing-lg">
+          Ich verbinde psychologische Erkenntnisse mit alltagstauglichen Strategien und biete Ihnen individuelle Begleitung.
+        </p>
+
+        <p class="text-body text-text-secondary">
+          Der Fokus liegt darauf, Ihre inneren Ressourcen zu stärken, neue Perspektiven zu eröffnen und konkrete Handlungsschritte zu entwickeln – immer mit dem Ziel einer langfristigen, positiven Veränderung.
+        </p>
+      </div>
+    </section>
+
+    <!-- Duration & Pricing -->
+    <section class="section container mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Dauer und Investition</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-spacing-lg mb-spacing-lg">
+          <div class="bg-accent-blue text-white p-spacing-lg rounded-lg">
+            <p class="text-h5 font-bold mb-spacing-md">Format</p>
+            <p class="text-body">Online via Zoom</p>
+          </div>
+          <div class="bg-accent-blue text-white p-spacing-lg rounded-lg">
+            <p class="text-h5 font-bold mb-spacing-md">Pro Sitzung</p>
+            <p class="text-body">60 Minuten</p>
+          </div>
+          <div class="bg-accent-blue text-white p-spacing-lg rounded-lg">
+            <p class="text-h5 font-bold mb-spacing-md">Preis</p>
+            <p class="text-body">100 € (zzgl. MwSt.)</p>
+          </div>
+          <div class="bg-accent-blue text-white p-spacing-lg rounded-lg">
+            <p class="text-h5 font-bold mb-spacing-md">Struktur</p>
+            <p class="text-body">Flexibel nach Ihren Bedürfnissen</p>
+          </div>
+        </div>
+
+        <p class="text-body text-text-secondary bg-primary-light p-spacing-lg rounded-lg">
+          Sie entscheiden, wie viele Sitzungen Sie nutzen möchten – ob einzelne Termine oder ein längerfristiges Coaching-Programm.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt container mx-auto">
+      <h2 class="text-h2 font-bold mb-spacing-xl">Häufig gestellte Fragen</h2>
+      
+      <div class="max-w-3xl space-y-spacing-lg">
+        <div class="bg-white p-spacing-lg rounded-lg">
+          <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">
+            Wie schnell sehe ich Ergebnisse?
+          </h3>
+          <p class="text-body text-text-secondary">
+            Erste Veränderungen sind oft schon nach 1-2 Sitzungen spürbar. Nachhaltige Transformation braucht kontinuierliches Üben – meist 4-6 Sitzungen.
+          </p>
+        </div>
+
+        <div class="bg-white p-spacing-lg rounded-lg">
+          <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">
+            Ist Online-Coaching genauso wirksam wie persönlich?
+          </h3>
+          <p class="text-body text-text-secondary">
+            Ja! Online-Coaching via Zoom ist genauso wirksam, wenn nicht wirksamer, weil Sie in Ihrer vertrauten Umgebung sind.
+          </p>
+        </div>
+
+        <div class="bg-white p-spacing-lg rounded-lg">
+          <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">
+            Müssen wir einen längerfristigen Vertrag abschließen?
+          </h3>
+          <p class="text-body text-text-secondary">
+            Nein. Sie können einzelne Sitzungen buchen oder flexibel entscheiden, wie lange Sie zusammenarbeiten möchten.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section container mx-auto">
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg text-center">Bereit zu starten?</h2>
+        <p class="text-center text-body text-text-secondary mb-spacing-xl">
+          Vereinbaren Sie ein kostenfreies Erstgespräch.
+        </p>
+        <ContactForm />
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

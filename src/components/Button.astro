@@ -1,0 +1,47 @@
+---
+// Button component with 3 variants: primary, secondary, tertiary
+export interface Props {
+  variant?: "primary" | "secondary" | "tertiary";
+  size?: "sm" | "md" | "lg";
+  href?: string;
+  type?: "button" | "submit" | "reset";
+  class?: string;
+}
+
+const { variant = "primary", size = "md", href, type = "button", class: customClass = "" } = Astro.props;
+
+// Variant styles
+const variantClasses = {
+  primary: "bg-accent-blue text-white hover:bg-accent-blue-dark",
+  secondary: "bg-primary-light text-primary-dark hover:bg-accent-gray",
+  tertiary: "border-2 border-accent-blue text-accent-blue hover:bg-accent-blue hover:text-white",
+};
+
+// Size styles
+const sizeClasses = {
+  sm: "px-spacing-md py-spacing-sm text-sm",
+  md: "px-spacing-lg py-spacing-md text-body",
+  lg: "px-spacing-2xl py-spacing-lg text-h5",
+};
+
+const baseClasses = "rounded font-semibold transition-all duration-200 inline-flex items-center justify-center";
+const buttonClasses = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${customClass}`;
+
+if (href) {
+  // Link button
+} else {
+  // Submit/button variant
+}
+---
+
+{
+  href ? (
+    <a href={href} class={buttonClasses}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={buttonClasses}>
+      <slot />
+    </button>
+  )
+}

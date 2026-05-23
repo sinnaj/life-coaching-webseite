@@ -1,0 +1,115 @@
+---
+// Contact Form component - integrates with Formspree for form submissions
+export interface Props {
+  formId?: string;
+  buttonText?: string;
+}
+
+const { formId = "mdodkeza", buttonText = "Nachricht senden" } = Astro.props;
+const toBase = (path: string) => {
+  const base = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  return `${base}${path.replace(/^\/+/, "")}`;
+};
+---
+
+<form action={`https://formspree.io/f/${formId}`} method="POST" class="max-w-2xl space-y-spacing-lg">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-spacing-lg">
+    <!-- Name Field -->
+    <div class="flex flex-col">
+      <label for="name" class="text-sm font-semibold text-primary-dark mb-spacing-sm">
+        Name *
+      </label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        class="px-spacing-md py-spacing-sm border-2 border-primary-light rounded focus:outline-none focus:border-accent-blue transition-colors"
+        placeholder="Ihr Name"
+      />
+    </div>
+
+    <!-- Email Field -->
+    <div class="flex flex-col">
+      <label for="email" class="text-sm font-semibold text-primary-dark mb-spacing-sm">
+        Email *
+      </label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        class="px-spacing-md py-spacing-sm border-2 border-primary-light rounded focus:outline-none focus:border-accent-blue transition-colors"
+        placeholder="ihre.email@example.com"
+      />
+    </div>
+  </div>
+
+  <!-- Phone Field (optional) -->
+  <div class="flex flex-col">
+    <label for="phone" class="text-sm font-semibold text-primary-dark mb-spacing-sm">
+      Telefon
+    </label>
+    <input
+      type="tel"
+      id="phone"
+      name="phone"
+      class="px-spacing-md py-spacing-sm border-2 border-primary-light rounded focus:outline-none focus:border-accent-blue transition-colors"
+      placeholder="+49 (0) 123 456789"
+    />
+  </div>
+
+  <!-- Subject Field -->
+  <div class="flex flex-col">
+    <label for="subject" class="text-sm font-semibold text-primary-dark mb-spacing-sm">
+      Betreff *
+    </label>
+    <input
+      type="text"
+      id="subject"
+      name="subject"
+      required
+      class="px-spacing-md py-spacing-sm border-2 border-primary-light rounded focus:outline-none focus:border-accent-blue transition-colors"
+      placeholder="Ihr Anliegen"
+    />
+  </div>
+
+  <!-- Message Field -->
+  <div class="flex flex-col">
+    <label for="message" class="text-sm font-semibold text-primary-dark mb-spacing-sm">
+      Nachricht *
+    </label>
+    <textarea
+      id="message"
+      name="message"
+      required
+      rows="6"
+      class="px-spacing-md py-spacing-sm border-2 border-primary-light rounded focus:outline-none focus:border-accent-blue transition-colors resize-none"
+      placeholder="Ihre Nachricht..."
+    ></textarea>
+  </div>
+
+  <!-- Privacy Notice -->
+  <div class="flex items-start gap-spacing-md">
+    <input
+      type="checkbox"
+      id="privacy"
+      name="privacy"
+      required
+      class="mt-1 w-4 h-4 rounded accent-accent-blue"
+    />
+    <label for="privacy" class="text-xs text-text-secondary">
+      Ich akzeptiere die <a href={toBase("/datenschutz")} class="text-accent-blue hover:underline">Datenschutzerklärung</a>
+    </label>
+  </div>
+
+  <!-- Submit Button -->
+  <button
+    type="submit"
+    class="w-full md:w-auto px-spacing-lg py-spacing-md bg-accent-blue text-white font-semibold rounded hover:bg-accent-blue-dark transition-colors"
+  >
+    {buttonText}
+  </button>
+</form>
