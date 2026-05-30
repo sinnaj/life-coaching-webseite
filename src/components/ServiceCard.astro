@@ -4,11 +4,15 @@ export interface Props {
   title: string;
   description: string;
   icon?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  imagePosition?: string;
+  imageFit?: "cover" | "contain";
   href: string;
   highlight?: boolean;
 }
 
-const { title, description, icon, href, highlight = false } = Astro.props;
+const { title, description, icon, imageSrc, imageAlt, imagePosition, imageFit = "cover", href, highlight = false } = Astro.props;
 ---
 
 <a
@@ -22,7 +26,17 @@ const { title, description, icon, href, highlight = false } = Astro.props;
     }
   `}
 >
-  {icon && (
+  {imageSrc ? (
+    <div class="mb-spacing-md rounded-md overflow-hidden border border-primary-light">
+      <img
+        src={imageSrc}
+        alt={imageAlt || title}
+        class={`w-full h-44 ${imageFit === "contain" ? "object-contain" : "object-cover"}`}
+        style={imagePosition ? `object-position: ${imagePosition};` : undefined}
+        loading="lazy"
+      />
+    </div>
+  ) : icon && (
     <div class={`text-h2 mb-spacing-md ${highlight ? "text-white" : "text-accent-blue"}`}>
       {icon}
     </div>

@@ -12,12 +12,33 @@ const toBase = (path: string) => {
   return `${base}${path.replace(/^\/+/, "")}`;
 };
 
-const navItems = [
-  { label: "Coaching", href: toBase("/coaching") },
-  { label: "Profil", href: toBase("/profil") },
-  { label: "Motivation", href: toBase("/motivation") },
-  { label: "Kontakt", href: toBase("/kontakt") },
+const normalizePath = (path: string) => {
+  const trimmed = path.replace(/\/+$/, "");
+  return trimmed === "" ? "/" : trimmed;
+};
+const basePath = import.meta.env.BASE_URL === "/"
+  ? ""
+  : import.meta.env.BASE_URL.replace(/\/$/, "");
+const currentPath = normalizePath(
+  Astro.url.pathname.startsWith(basePath)
+    ? Astro.url.pathname.slice(basePath.length) || "/"
+    : Astro.url.pathname,
+);
+const coachingItems = [
+  { label: "Übersicht", path: "/coaching", href: toBase("/coaching") },
+  { label: "Life Coaching", path: "/coaching/life-coaching", href: toBase("/coaching/life-coaching") },
+  { label: "Stressbewältigung", path: "/coaching/stressbewaeltigung", href: toBase("/coaching/stressbewaeltigung") },
+  { label: "Raucherentwöhnung", path: "/coaching/raucherentwohnung", href: toBase("/coaching/raucherentwohnung") },
+  { label: "Alkohol selbstbestimmt", path: "/coaching/alkohol-selbstbestimmt", href: toBase("/coaching/alkohol-selbstbestimmt") },
+  { label: "Autogenes Training", path: "/coaching/autogenes-training", href: toBase("/coaching/autogenes-training") },
 ];
+const navItems = [
+  { label: "Startseite", key: "home", href: toBase("/") },
+  { label: "Coaching Angebot", key: "coaching", href: toBase("/coaching"), children: coachingItems },
+  { label: "Über Mich", key: "profil", href: toBase("/profil") },
+];
+const isCurrentPage = (key: string) => currentPage === key;
+const isCurrentPath = (path: string) => currentPath === normalizePath(path);
 ---
 
 <header class="sticky top-0 z-50 bg-primary-dark text-white shadow-md">
@@ -30,16 +51,50 @@ const navItems = [
     <!-- Desktop Navigation -->
     <div class="hidden md:flex items-center gap-spacing-lg">
       {navItems.map((item) => (
-        <a
-          href={item.href}
-          class={`text-body transition-colors ${
-            currentPage === item.label.toLowerCase()
-              ? "text-accent-blue font-semibold"
-              : "hover:text-accent-blue"
-          }`}
-        >
-          {item.label}
-        </a>
+        item.children ? (
+          <div class="relative group">
+            <a
+              href={item.href}
+              class={`inline-flex items-center gap-2 text-body transition-colors ${
+                isCurrentPage(item.key)
+                  ? "text-accent-blue font-semibold"
+                  : "hover:text-accent-blue"
+              }`}
+              aria-haspopup="true"
+            >
+              {item.label}
+              <span aria-hidden="true" class="text-xs transition-transform group-hover:rotate-180 group-focus-within:rotate-180">▾</span>
+            </a>
+
+            <div class="invisible absolute left-0 top-full pt-spacing-sm opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <div class="min-w-[18rem] rounded-lg border border-primary-light bg-white p-spacing-sm shadow-xl">
+                {item.children.map((child) => (
+                  <a
+                    href={child.href}
+                    class={`block rounded px-spacing-md py-spacing-sm text-sm transition-colors ${
+                      isCurrentPath(child.path)
+                        ? "bg-primary-light text-accent-blue font-semibold"
+                        : "text-primary-dark hover:bg-primary-light hover:text-accent-blue"
+                    }`}
+                  >
+                    {child.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <a
+            href={item.href}
+            class={`text-body transition-colors ${
+              isCurrentPage(item.key)
+                ? "text-accent-blue font-semibold"
+                : "hover:text-accent-blue"
+            }`}
+          >
+            {item.label}
+          </a>
+        )
       ))}
     </div>
 
@@ -70,9 +125,54 @@ const navItems = [
   >
     <div class="flex flex-col gap-spacing-md">
       {navItems.map((item) => (
-        <a href={item.href} class="text-white hover:text-accent-blue transition-colors">
-          {item.label}
-        </a>
+        item.children ? (
+          <div class="flex flex-col gap-spacing-sm">
+            <button
+              type="button"
+              id="mobile-coaching-toggle"
+              class={`flex items-center justify-between text-left transition-colors ${
+                isCurrentPage(item.key) ? "text-accent-blue font-semibold" : "text-white hover:text-accent-blue"
+              }`}
+              aria-expanded={isCurrentPage(item.key) ? "true" : "false"}
+              aria-controls="mobile-coaching-menu"
+            >
+              <span>{item.label}</span>
+              <span id="mobile-coaching-icon" aria-hidden="true" class={`text-xs transition-transform ${isCurrentPage(item.key) ? "rotate-180" : ""}`}>▾</span>
+            </button>
+
+            <div
+              id="mobile-coaching-menu"
+              class:list={[
+                "ml-spacing-md flex flex-col gap-spacing-sm border-l border-primary-light pl-spacing-md",
+                { hidden: !isCurrentPage(item.key) },
+              ]}
+            >
+              {item.children.map((child) => (
+                <a
+                  href={child.href}
+                  class={`transition-colors ${
+                    isCurrentPath(child.path)
+                      ? "text-accent-blue font-semibold"
+                      : "text-white hover:text-accent-blue"
+                  }`}
+                >
+                  {child.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <a
+            href={item.href}
+            class={`transition-colors ${
+              isCurrentPage(item.key)
+                ? "text-accent-blue font-semibold"
+                : "text-white hover:text-accent-blue"
+            }`}
+          >
+            {item.label}
+          </a>
+        )
       ))}
       <a
         href={toBase("/kontakt")}
@@ -87,10 +187,23 @@ const navItems = [
 <script>
   const toggle = document.getElementById("mobile-menu-toggle");
   const menu = document.getElementById("mobile-menu");
+  const coachingToggle = document.getElementById("mobile-coaching-toggle");
+  const coachingMenu = document.getElementById("mobile-coaching-menu");
+  const coachingIcon = document.getElementById("mobile-coaching-icon");
 
   if (toggle && menu) {
     toggle.addEventListener("click", () => {
       menu.classList.toggle("hidden");
+    });
+  }
+
+  if (coachingToggle && coachingMenu) {
+    coachingToggle.addEventListener("click", () => {
+      const isExpanded = coachingToggle.getAttribute("aria-expanded") === "true";
+
+      coachingToggle.setAttribute("aria-expanded", String(!isExpanded));
+      coachingMenu.classList.toggle("hidden");
+      coachingIcon?.classList.toggle("rotate-180");
     });
   }
 </script>

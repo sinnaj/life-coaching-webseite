@@ -7,4 +7,9 @@ export default defineConfig({
   base: '/life-coaching-webseite',
   output: 'static',
   outDir: './dist',
+  vite: {
+    server: {
+      allowedHosts: ['.ngrok-free.app', '.ngrok.io']
+    }
+  }
 });

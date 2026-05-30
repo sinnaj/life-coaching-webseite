@@ -7,6 +7,12 @@ import ContactForm from "../../components/ContactForm.astro";
 
 const title = "Autogenes Training | Schnell zur Ruhe kommen";
 const description = "Autogenes Training für innere Ruhe und Balance. Mit einfachen Formeln und mentalen Bildern zu mehr Entspannung.";
+const toBase = (path: string) => {
+  const base = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  return `${base}${path.replace(/^\/+/, "")}`;
+};
 ---
 
 <Layout {title} {description}>
@@ -20,6 +26,7 @@ const description = "Autogenes Training für innere Ruhe und Balance. Mit einfac
       ctaText="Termin anfragen"
       ctaHref="/kontakt"
       bgColor="dark"
+      image={toBase("/images/autogenes-training-beach.png")}
     />
 
     <section class="section container mx-auto">
@@ -27,14 +34,14 @@ const description = "Autogenes Training für innere Ruhe und Balance. Mit einfac
         <h2 class="text-h2 font-bold mb-spacing-lg">Was ist Autogenes Training?</h2>
         
         <p class="text-body text-text-secondary mb-spacing-lg">
-          Autogenes Training ist eine wissenschaftlich anerkannte Entspannungstechnik. Mit einfachen bewussten Formeln und Konzentration lenken Sie Ihren Körper in einen Zustand von Ruhe und Entspannung.
+          Autogenes Training ist eine wissenschaftlich anerkannte Entspannungstechnik. Mit einfachen bewussten Formeln und Konzentration lenkst du deinen Körper in einen Zustand von Ruhe und Entspannung.
         </p>
 
         <p class="text-body text-text-secondary mb-spacing-lg">
-          Der große Vorteil: Es dauert nur wenige Minuten und Sie können es überall anwenden – zuhause, im Büro, unterwegs.
+          Der große Vorteil: Es dauert nur wenige Minuten und du kannst es überall anwenden, zuhause, im Büro oder unterwegs.
         </p>
 
-        <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Was Sie erreichen können:</h3>
+        <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Was du erreichen kannst:</h3>
         <div class="space-y-spacing-md bg-primary-light p-spacing-lg rounded-lg">
           <div class="flex gap-spacing-md items-start">
             <span class="text-accent-blue font-bold">✓</span>
@@ -65,33 +72,33 @@ const description = "Autogenes Training für innere Ruhe und Balance. Mit einfac
         <h2 class="text-h2 font-bold mb-spacing-lg">Das Programm</h2>
         
         <p class="text-body text-text-secondary mb-spacing-lg">
-          In 4 Sitzungen lernen Sie Schritt für Schritt die Grundformeln und mentalen Bilder des Autogenen Trainings.
+          In 4 Sitzungen lernst du Schritt für Schritt die Grundformeln und mentalen Bilder des Autogenen Trainings.
         </p>
 
         <div class="space-y-spacing-lg mb-spacing-lg">
           <div class="bg-white p-spacing-lg rounded-lg border-l-4 border-accent-blue">
             <h3 class="text-h5 font-bold text-primary-dark mb-spacing-md">Sitzung 1-2: Grundlagen</h3>
             <p class="text-body text-text-secondary">
-              Sie lernen die Grundsätze und die erste Technik – Schwere und Wärme. Wir üben gemeinsam.
+              Du lernst die Grundsätze und die erste Technik, Schwere und Wärme. Wir üben gemeinsam.
             </p>
           </div>
 
           <div class="bg-white p-spacing-lg rounded-lg border-l-4 border-accent-blue">
             <h3 class="text-h5 font-bold text-primary-dark mb-spacing-md">Sitzung 3-4: Vertiefung &amp; Üben</h3>
             <p class="text-body text-text-secondary">
-              Weitere Techniken und Vertiefung. Sie erhalten MP3-Aufnahmen zum Üben zuhause.
+              Weitere Techniken und Vertiefung. Du erhältst MP3-Aufnahmen zum Üben zuhause.
             </p>
           </div>
         </div>
 
         <div class="bg-accent-blue text-white p-spacing-lg rounded-lg mb-spacing-lg">
-          <p class="text-h5 font-bold mb-spacing-md">Ihre Investition</p>
-          <p class="text-h2 font-bold mb-spacing-md">280 €</p>
+          <p class="text-h5 font-bold mb-spacing-md">Deine Investition</p>
+          <p class="text-h2 font-bold mb-spacing-md">300 €</p>
           <p class="">4 Sitzungen à 45 Minuten + MP3-Dateien zum Üben</p>
         </div>
 
         <p class="text-body text-text-secondary bg-primary-light p-spacing-lg rounded-lg">
-          Nach dem Programm haben Sie eine Fähigkeit, die Ihr ganzes Leben bereichert – die Fähigkeit, schnell zu entspannen, wann immer Sie es brauchen.
+          Nach dem Programm hast du eine Fähigkeit, die dein ganzes Leben bereichert: schnell zu entspannen, wann immer du es brauchst.
         </p>
       </div>
     </section>
@@ -100,7 +107,7 @@ const description = "Autogenes Training für innere Ruhe und Balance. Mit einfac
       <div class="max-w-2xl mx-auto">
         <h2 class="text-h2 font-bold mb-spacing-lg text-center">Bereit, innere Ruhe zu entdecken?</h2>
         <p class="text-center text-body text-text-secondary mb-spacing-xl">
-          Vereinbaren Sie ein kostenfreies Erstgespräch.
+          Vereinbare ein Erstgespräch.
         </p>
         <ContactForm />
       </div>

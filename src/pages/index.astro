@@ -35,10 +35,10 @@ const toBase = (path: string) => {
     <!-- Trust Strip -->
     <section class="bg-white py-spacing-lg px-spacing-md border-b-2 border-primary-light">
       <div class="container mx-auto flex flex-wrap justify-center gap-spacing-lg">
-        <TrustChip text="Psychologisch fundiert" icon="✓" />
-        <TrustChip text="Online via Zoom" icon="💻" />
-        <TrustChip text="Langjährige Erfahrung" icon="🎯" />
-        <TrustChip text="Klare Preise" icon="💰" />
+        <TrustChip text="Psychologisch fundiert" />
+        <TrustChip text="Online via Zoom" />
+        <TrustChip text="Langjährige Erfahrung" />
+        <TrustChip text="Transparente Preise" />
       </div>
     </section>
 
@@ -46,7 +46,7 @@ const toBase = (path: string) => {
     <section class="section container mx-auto">
       <h2 class="text-h2 font-bold text-center mb-spacing-xl">Meine Schwerpunkte</h2>
       <p class="text-center text-body text-text-secondary max-w-2xl mx-auto mb-spacing-2xl">
-        Mehr Klarheit, innere Stärke und Balance im Alltag. Gemeinsam arbeiten wir an Ihren persönlichen Zielen.
+        Mehr Klarheit, innere Stärke und Balance im Alltag. Gemeinsam arbeiten wir an deinen persönlichen Zielen.
       </p>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-spacing-lg">
@@ -54,37 +54,45 @@ const toBase = (path: string) => {
           title="Persönlichkeitsentwicklung"
           description="Mehr Selbstvertrauen, emotionale Balance und bewusstes Handeln entwickeln."
           href={toBase("/coaching/life-coaching")}
-          icon="🌟"
+          imageSrc={toBase("/images/online-coaching.png")}
+          imageAlt="Online Coaching für Persönlichkeitsentwicklung"
+          imagePosition="50% 18%"
+          imageFit="contain"
         />
         <ServiceCard
           title="Stressbewältigung"
           description="Stressmuster erkennen und mit Belastungen gelassener umgehen."
           href={toBase("/coaching/stressbewaeltigung")}
-          icon="🧘"
+          imageSrc={toBase("/images/stressbewaeltigung-cool-pose-christiane.png")}
+          imageAlt="Stressbewältigung am Strand"
+          imagePosition="50% 0%"
         />
         <ServiceCard
           title="Raucherentwöhnung"
           description="Endlich rauchfrei werden mit Hypnose und Mental-Coaching."
           href={toBase("/coaching/raucherentwohnung")}
-          icon="🚭"
+          imageSrc={toBase("/images/rauchfrei-beach.jpg")}
+          imageAlt="Raucherentwöhnung mit Fokus auf Rauchfreiheit"
+          imagePosition="50% 0%"
         />
         <ServiceCard
           title="Alkohol & Selbstbestimmung"
           description="Selbstbestimmt und bewusst weniger trinken, ohne komplett zu verzichten."
           href={toBase("/coaching/alkohol-selbstbestimmt")}
-          icon="🎯"
+          imageSrc={toBase("/images/kontrolliertes-trinken-weniger-is-mehr.jpg")}
+          imageAlt="Kontrolliertes Trinken und bewusster Umgang"
         />
         <ServiceCard
           title="Autogenes Training"
           description="Schnell zur Ruhe kommen und innere Balance stärken."
           href={toBase("/coaching/autogenes-training")}
-          icon="💤"
+          imageSrc={toBase("/images/autogenes-training-beach.png")}
+          imageAlt="Autogenes Training zur Entspannung"
         />
         <ServiceCard
           title="Alle Angebote"
-          description="Entdecken Sie alle Coaching-Programme im Detail mit Preisen und Ablauf."
+          description="Entdecke alle Coaching-Programme im Detail mit Preisen und Ablauf."
           href={toBase("/coaching")}
-          icon="→"
           highlight={true}
         />
       </div>
@@ -110,7 +118,7 @@ const toBase = (path: string) => {
           </div>
           <div class="flex gap-spacing-md items-start">
             <span class="text-h4 text-accent-blue font-bold min-w-fit">•</span>
-            <p class="text-body"><strong>Flexibel</strong> in Ihrem Alltag</p>
+            <p class="text-body"><strong>Flexibel</strong> in deinem Alltag</p>
           </div>
           <div class="flex gap-spacing-md items-start">
             <span class="text-h4 text-accent-blue font-bold min-w-fit">•</span>
@@ -127,12 +135,13 @@ const toBase = (path: string) => {
     <!-- About Preview Section -->
     <section class="section container mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-spacing-2xl items-center">
-        <!-- Image placeholder -->
-        <div class="bg-primary-light rounded-lg p-spacing-xl flex items-center justify-center min-h-96">
-          <div class="text-center text-text-secondary">
-            <p class="text-h4 font-semibold">Foto</p>
-            <p class="text-sm">Porträt wird hinzugefügt</p>
-          </div>
+        <!-- Headshot Image -->
+        <div class="rounded-lg overflow-hidden shadow-lg">
+          <img
+            src={toBase("/images/christiane-headshot-professional.jpeg")}
+            alt="Christiane Meik - Diplom-Pädagogin und Mental-Coach"
+            class="w-full h-auto object-cover"
+          />
         </div>
 
         <!-- About Content -->
@@ -140,7 +149,7 @@ const toBase = (path: string) => {
           <h2 class="text-h2 font-bold mb-spacing-lg">Wer ich bin</h2>
           
           <p class="text-body text-text-secondary mb-spacing-lg">
-            Ich bin Diplom-Pädagogin und zertifizierte Trainerin mit langjähriger therapeutischer Erfahrung. Als ausgebildete Suchttherapeutin und Mental-Coach verbinde ich wissenschaftliche Erkenntnisse mit alltagstauglichen Strategien.
+            Ich bin Diplom-Pädagogin und zertifizierte Trainerin mit langjähriger therapeutischer Erfahrung. Als Sozialtherapeutin mit Schwerpunkt Sucht und Mental-Coach verbinde ich wissenschaftliche Erkenntnisse mit alltagstauglichen Strategien.
           </p>
 
           <p class="text-body text-text-secondary mb-spacing-lg">
@@ -166,7 +175,7 @@ const toBase = (path: string) => {
           <div class="text-h2 font-bold text-accent-blue mb-spacing-md">1</div>
           <h3 class="text-h4 font-bold mb-spacing-md">Anfrage senden</h3>
           <p class="text-body text-text-secondary">
-            Nehmen Sie Kontakt auf per Formular oder E-Mail. Kurz beschreiben, was Sie bewegt.
+            Nimm per Formular oder E-Mail Kontakt auf und beschreibe kurz, was dich bewegt.
           </p>
         </div>
 
@@ -174,7 +183,7 @@ const toBase = (path: string) => {
           <div class="text-h2 font-bold text-accent-blue mb-spacing-md">2</div>
           <h3 class="text-h4 font-bold mb-spacing-md">Erstgespräch vereinbaren</h3>
           <p class="text-body text-text-secondary">
-            Wir klären Ihre Ziele, überprüfen die Passung und schauen gemeinsam, welches Angebot am besten passt.
+            Wir klären deine Ziele, prüfen die Passung und schauen gemeinsam, welches Angebot am besten passt.
           </p>
         </div>
 
@@ -182,7 +191,7 @@ const toBase = (path: string) => {
           <div class="text-h2 font-bold text-accent-blue mb-spacing-md">3</div>
           <h3 class="text-h4 font-bold mb-spacing-md">Coaching starten</h3>
           <p class="text-body text-text-secondary">
-            Sie entscheiden sich für das passende Programm und wir starten in Ihrem Tempo.
+            Du entscheidest dich für das passende Programm und wir starten in deinem Tempo.
           </p>
         </div>
       </div>
@@ -203,7 +212,7 @@ const toBase = (path: string) => {
 
         <div class="bg-accent-light border-l-4 border-accent-blue p-spacing-lg rounded-r-lg">
           <p class="text-sm text-text-secondary">
-            <strong>Wichtig:</strong> Es ersetzt keine Psychotherapie, kann jedoch eine wertvolle Unterstützung bei persönlicher Entwicklung und Prävention sein. Bei psychischen Belastungen oder Erkrankungen konsultieren Sie bitte einen Facharzt oder Psychotherapeuten.
+            <strong>Wichtig:</strong> Es ersetzt keine Psychotherapie, kann jedoch eine wertvolle Unterstützung bei persönlicher Entwicklung und Prävention sein. Bei psychischen Belastungen oder Erkrankungen konsultiere bitte einen Facharzt oder Psychotherapeuten.
           </p>
         </div>
       </div>
@@ -231,9 +240,9 @@ const toBase = (path: string) => {
     <!-- Final CTA Section -->
     <section class="section bg-primary-dark text-white container mx-auto">
       <div class="max-w-2xl mx-auto text-center">
-        <h2 class="text-h2 font-bold mb-spacing-lg">Bereit für den nächsten Schritt?</h2>
+        <h2 class="text-h2 font-bold mb-spacing-lg">Bereit für deinen nächsten Schritt?</h2>
         <p class="text-body text-accent-gray mb-spacing-lg">
-          Ein kostenfreies Erstgespräch ist der beste Weg, um zu klären, ob und wie wir zusammenpassen.
+          Ein Erstgespräch ist der beste Weg, um zu klären, ob und wie wir zusammenpassen.
         </p>
         <a
           href={toBase("/kontakt")}
