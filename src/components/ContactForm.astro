@@ -5,7 +5,8 @@ export interface Props {
   buttonText?: string;
 }
 
-const { formId = "mdodkeza", buttonText = "Nachricht senden" } = Astro.props;
+const { formId, buttonText = "Nachricht senden" } = Astro.props;
+const resolvedFormId = formId ?? import.meta.env.PUBLIC_FORMSPREE_FORM_ID ?? "mdodkeza";
 const toBase = (path: string) => {
   const base = import.meta.env.BASE_URL.endsWith("/")
     ? import.meta.env.BASE_URL
@@ -14,7 +15,16 @@ const toBase = (path: string) => {
 };
 ---
 
-<form action={`https://formspree.io/f/${formId}`} method="POST" class="max-w-2xl space-y-spacing-lg">
+<form action={`https://formspree.io/f/${resolvedFormId}`} method="POST" class="max-w-2xl space-y-spacing-lg">
+  <input type="hidden" name="_subject" value="Neue Kontaktanfrage ueber meiklifecoaching.de" />
+  <input type="hidden" name="_language" value="de" />
+
+  <!-- Honeypot field for basic bot protection -->
+  <div class="hidden" aria-hidden="true">
+    <label for="website">Bitte dieses Feld leer lassen</label>
+    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+  </div>
+
   <div class="grid grid-cols-1 md:grid-cols-2 gap-spacing-lg">
     <!-- Name Field -->
     <div class="flex flex-col">
