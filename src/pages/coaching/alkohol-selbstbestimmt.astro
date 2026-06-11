@@ -13,14 +13,42 @@ const toBase = (path: string) => {
     : `${import.meta.env.BASE_URL}/`;
   return `${base}${path.replace(/^\/+/, "")}`;
 };
+const siteOrigin = Astro.site ?? new URL("https://sinnaj.github.io");
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Alkohol selbstbestimmt - Kontrolliert trinken",
+  description,
+  provider: {
+    "@type": "Person",
+    name: "Christiane Meik",
+  },
+  serviceType: "Kontrolliertes Trinken",
+  areaServed: "DE",
+  availableChannel: {
+    "@type": "ServiceChannel",
+    serviceUrl: new URL(toBase("/coaching/alkohol-selbstbestimmt"), siteOrigin).toString(),
+    availableLanguage: ["de"],
+  },
+};
 ---
 
-<Layout {title} {description}>
+<Layout
+  {title}
+  {description}
+  keywords={[
+    "kontrolliertes Trinken",
+    "Alkohol selbstbestimmt",
+    "weniger Alkohol trinken",
+    "Coaching Suchtprävention",
+  ]}
+  schema={pageSchema}
+>
   <Header currentPage="coaching" />
 
   <main class="page-content">
     <HeroSection
-      title="Alkohol & Selbstbestimmung"
+      title="Alkohol selbstbestimmt"
       subtitle="Kontrolliert trinken"
       description="Selbstbestimmt und bewusst weniger trinken, ohne komplett zu verzichten. Individuelle Strategien für mehr Autonomie und Wohlbefinden."
       ctaText="Termin anfragen"
@@ -98,15 +126,15 @@ const toBase = (path: string) => {
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-spacing-lg">
           <div class="bg-accent-blue text-white p-spacing-lg rounded-lg">
-            <p class="text-h5 font-bold mb-spacing-sm">Einzelne Sitzung</p>
-            <p class="text-h3 font-bold">100 €</p>
-            <p class="text-sm opacity-90">pro 60 Min. Coaching</p>
+            <p class="text-h5 font-bold mb-spacing-sm">Erste Sitzung: Analyse &amp; Zieklärung</p>
+            <p class="text-h3 font-bold">103,50€</p>
+            <p class="text-sm opacity-90">für 60 Min. Coaching + Material</p>
           </div>
 
           <div class="bg-accent-light text-primary-dark p-spacing-lg rounded-lg border-2 border-accent-blue">
-            <p class="text-h5 font-bold mb-spacing-sm">Komplettpaket</p>
-            <p class="text-h3 font-bold">730 €</p>
-            <p class="text-sm">7 Sitzungen (inklusive Material)</p>
+            <p class="text-h5 font-bold mb-spacing-sm">Coachingpaket: Kontrolliertes trinken</p>
+            <p class="text-h3 font-bold">626,50€</p>
+            <p class="text-sm">6 Sitzungen à 60 Minuten + Material</p>
           </div>
         </div>
       </div>

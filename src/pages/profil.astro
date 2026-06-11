@@ -12,9 +12,35 @@ const toBase = (path: string) => {
     : `${import.meta.env.BASE_URL}/`;
   return `${base}${path.replace(/^\/+/, "")}`;
 };
+const siteOrigin = Astro.site ?? new URL("https://sinnaj.github.io");
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  name: title,
+  description,
+  url: new URL(toBase("/profil"), siteOrigin).toString(),
+  inLanguage: "de-DE",
+  mainEntity: {
+    "@type": "Person",
+    name: "Christiane Meik",
+    jobTitle: "Mental-Coach",
+    description: "Diplom-Pädagogin und Mental-Coach mit langjähriger Erfahrung.",
+  },
+};
 ---
 
-<Layout {title} {description}>
+<Layout
+  {title}
+  {description}
+  ogImage={toBase("/images/christiane-headshot-professional.jpeg")}
+  keywords={[
+    "Christiane Meik",
+    "Mental Coach Profil",
+    "Diplom Pädagogin Coaching",
+    "Erfahrung Stressbewältigung",
+  ]}
+  schema={pageSchema}
+>
   <Header currentPage="profil" />
 
   <main class="page-content">
@@ -22,7 +48,7 @@ const toBase = (path: string) => {
     <HeroSection
       title="Über mich"
       subtitle="Wer ich bin und warum ich coache"
-      description="Ich bin Diplom-Pädagogin und zertifizierte Trainerin mit langjähriger therapeutischer Erfahrung."
+      description="Ich bin Diplom-Pädagogin, Mental-Coach und zertifizierte Trainerin mit langjähriger psychotherapeutischer Erfahrung."
       bgColor="dark"
     />
 
@@ -43,7 +69,7 @@ const toBase = (path: string) => {
           <h2 class="text-h2 font-bold mb-spacing-lg">Wer ich bin</h2>
 
           <p class="text-body text-text-secondary mb-spacing-lg">
-            Ich bin Diplom-Pädagogin und zertifizierte Trainerin mit langjähriger therapeutischer Erfahrung. Als Sozialtherapeutin mit Schwerpunkt Sucht und Mental-Coach verbinde ich wissenschaftliche Erkenntnisse mit alltagstauglichen Strategien.
+            Ich bin Diplom-Pädagogin, Mental-Coach und zertifizierte Trainerin mit langjähriger psychotherapeutischer Erfahrung. Als Sozialtherapeutin mit Schwerpunkt Sucht und Mental-Coach verbinde ich wissenschaftliche Erkenntnisse mit alltagstauglichen Strategien.
           </p>
 
           <p class="text-body text-text-secondary mb-spacing-lg">
@@ -167,7 +193,7 @@ const toBase = (path: string) => {
 
     <section class="section section-alt container mx-auto">
       <div class="max-w-3xl mx-auto">
-        <h2 class="text-h2 font-bold mb-spacing-lg">Was ich gelernt habe</h2>
+        <h2 class="text-h2 font-bold mb-spacing-lg">Meine Erfahrungen</h2>
 
         <div class="space-y-spacing-lg">
           <div class="bg-white p-spacing-lg rounded-lg border-l-4 border-accent-blue">
@@ -199,7 +225,7 @@ const toBase = (path: string) => {
           </div>
 
           <div class="bg-white p-spacing-lg rounded-lg border-l-4 border-accent-blue">
-            <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Ressourcen stärken funktioniert</h3>
+            <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Innere Blockaden lösen funktioniert</h3>
             <p class="text-body text-text-secondary">
               Menschen haben oft mehr innere Kraft, als sie sich selbst zutrauen. Es geht darum, diese vorhandenen Ressourcen zu sehen und zu nutzen.
             </p>
@@ -217,6 +243,10 @@ const toBase = (path: string) => {
         </p>
 
         <div class="space-y-spacing-md bg-primary-light p-spacing-lg rounded-lg mb-spacing-lg">
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue text-h3 font-bold">✓</span>
+            <p class="text-body">Ihr Leben in Freiheit bewusst gestalten.</p>
+          </div>
           <div class="flex gap-spacing-md items-start">
             <span class="text-accent-blue text-h3 font-bold">✓</span>
             <p class="text-body">Sich selbst wieder besser verstehen und akzeptieren</p>

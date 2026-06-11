@@ -13,9 +13,63 @@ const toBase = (path: string) => {
     : `${import.meta.env.BASE_URL}/`;
   return `${base}${path.replace(/^\/+/, "")}`;
 };
+const siteOrigin = Astro.site ?? new URL("https://sinnaj.github.io");
+const coachingUrl = new URL(toBase("/coaching"), siteOrigin).toString();
+const pageSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: title,
+    description,
+    url: coachingUrl,
+    inLanguage: "de-DE",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Wie lange dauert eine typische Coaching-Serie?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Das hängt vom Anliegen ab. Einige Programme dauern 4 Sitzungen, andere 6. Life Coaching ist flexibel gestaltbar.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Ist das Coaching auch für Anfänger geeignet?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ja. Es sind keine Vorkenntnisse notwendig. Die Programme werden individuell an den aktuellen Stand angepasst.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Kann ich das Coaching unterbrechen?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ja. Eine Pause ist möglich und das Coaching kann später flexibel fortgesetzt werden.",
+        },
+      },
+    ],
+  },
+];
 ---
 
-<Layout {title} {description}>
+<Layout
+  {title}
+  {description}
+  keywords={[
+    "Coaching Angebote",
+    "Life Coaching",
+    "Raucherentwöhnung online",
+    "Stressbewältigung Coaching",
+    "Autogenes Training online",
+    "Alkohol kontrolliert trinken",
+  ]}
+  schema={pageSchema}
+>
   <Header currentPage="coaching" />
 
   <main class="page-content">

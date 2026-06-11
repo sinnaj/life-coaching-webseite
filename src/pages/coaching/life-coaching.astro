@@ -8,9 +8,43 @@ import ContactForm from "../../components/ContactForm.astro";
 
 const title = "Life Coaching Online | Persönlichkeitsentwicklung & Lebensqualität";
 const description = "Psychologisch fundiertes Life Coaching für Persönlichkeitsentwicklung, Selbstvertrauen und emotionale Balance. Online und individuell.";
+const toBase = (path: string) => {
+  const base = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  return `${base}${path.replace(/^\/+/, "")}`;
+};
+const siteOrigin = Astro.site ?? new URL("https://sinnaj.github.io");
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Life Coaching Online",
+  description,
+  provider: {
+    "@type": "Person",
+    name: "Christiane Meik",
+  },
+  serviceType: "Life Coaching",
+  areaServed: "DE",
+  availableChannel: {
+    "@type": "ServiceChannel",
+    serviceUrl: new URL(toBase("/coaching/life-coaching"), siteOrigin).toString(),
+    availableLanguage: ["de"],
+  },
+};
 ---
 
-<Layout {title} {description}>
+<Layout
+  {title}
+  {description}
+  keywords={[
+    "Life Coaching Online",
+    "Persönlichkeitsentwicklung Coaching",
+    "Selbstvertrauen stärken",
+    "emotionale Balance",
+  ]}
+  schema={pageSchema}
+>
   <Header currentPage="coaching" />
 
   <main class="page-content">
@@ -194,7 +228,7 @@ const description = "Psychologisch fundiertes Life Coaching für Persönlichkeit
             Wie schnell sehe ich Ergebnisse?
           </h3>
           <p class="text-body text-text-secondary">
-            Erste Veränderungen sind oft schon nach 1-2 Sitzungen spürbar. Nachhaltige Transformation braucht kontinuierliches Üben – meist 4-6 Sitzungen.
+            Erste Veränderungen können schon nach 1-2 Sitzungen spürbar sein.
           </p>
         </div>
 

@@ -13,9 +13,37 @@ const toBase = (path: string) => {
     : `${import.meta.env.BASE_URL}/`;
   return `${base}${path.replace(/^\/+/, "")}`;
 };
+const siteOrigin = Astro.site ?? new URL("https://sinnaj.github.io");
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Stressbewältigung Online",
+  description,
+  provider: {
+    "@type": "Person",
+    name: "Christiane Meik",
+  },
+  serviceType: "Stressbewältigung",
+  areaServed: "DE",
+  availableChannel: {
+    "@type": "ServiceChannel",
+    serviceUrl: new URL(toBase("/coaching/stressbewaeltigung"), siteOrigin).toString(),
+    availableLanguage: ["de"],
+  },
+};
 ---
 
-<Layout {title} {description}>
+<Layout
+  {title}
+  {description}
+  keywords={[
+    "Stressbewältigung online",
+    "Stress Coaching",
+    "Resilienz aufbauen",
+    "Stressmuster erkennen",
+  ]}
+  schema={pageSchema}
+>
   <Header currentPage="coaching" />
 
   <main class="page-content">

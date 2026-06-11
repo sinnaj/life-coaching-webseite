@@ -13,9 +13,37 @@ const toBase = (path: string) => {
     : `${import.meta.env.BASE_URL}/`;
   return `${base}${path.replace(/^\/+/, "")}`;
 };
+const siteOrigin = Astro.site ?? new URL("https://sinnaj.github.io");
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Autogenes Training Online",
+  description,
+  provider: {
+    "@type": "Person",
+    name: "Christiane Meik",
+  },
+  serviceType: "Autogenes Training",
+  areaServed: "DE",
+  availableChannel: {
+    "@type": "ServiceChannel",
+    serviceUrl: new URL(toBase("/coaching/autogenes-training"), siteOrigin).toString(),
+    availableLanguage: ["de"],
+  },
+};
 ---
 
-<Layout {title} {description}>
+<Layout
+  {title}
+  {description}
+  keywords={[
+    "Autogenes Training online",
+    "Entspannung lernen",
+    "innere Ruhe",
+    "mentales Training",
+  ]}
+  schema={pageSchema}
+>
   <Header currentPage="coaching" />
 
   <main class="page-content">

@@ -16,9 +16,40 @@ const toBase = (path: string) => {
     : `${import.meta.env.BASE_URL}/`;
   return `${base}${path.replace(/^\/+/, "")}`;
 };
+const siteOrigin = Astro.site ?? new URL("https://sinnaj.github.io");
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: title,
+  description,
+  url: new URL(toBase("/"), siteOrigin).toString(),
+  inLanguage: "de-DE",
+  about: [
+    "Life Coaching",
+    "Mental-Coaching",
+    "Stressbewältigung",
+    "Raucherentwöhnung",
+    "Autogenes Training",
+    "Kontrolliertes Trinken",
+  ],
+};
 ---
 
-<Layout {title} {description}>
+<Layout
+  {title}
+  {description}
+  ogImage={toBase("/images/christiane-headshot-professional.jpeg")}
+  keywords={[
+    "Life Coaching Online",
+    "Mental Coaching",
+    "Stressbewältigung",
+    "Raucherentwöhnung",
+    "Autogenes Training",
+    "kontrolliertes Trinken",
+    "Christiane Meik",
+  ]}
+  schema={pageSchema}
+>
   <Header currentPage="home" />
 
   <main class="page-content">

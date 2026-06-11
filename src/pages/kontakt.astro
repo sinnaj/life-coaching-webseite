@@ -7,9 +7,34 @@ import ContactForm from "../components/ContactForm.astro";
 
 const title = "Kontakt | Christiane Meik Coaching";
 const description = "Kontaktiere mich per Formular, E-Mail oder Telefon. Ich freue mich, von dir zu hören.";
+const toBase = (path: string) => {
+  const base = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  return `${base}${path.replace(/^\/+/, "")}`;
+};
+const siteOrigin = Astro.site ?? new URL("https://sinnaj.github.io");
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: title,
+  description,
+  url: new URL(toBase("/kontakt"), siteOrigin).toString(),
+  inLanguage: "de-DE",
+};
 ---
 
-<Layout {title} {description}>
+<Layout
+  {title}
+  {description}
+  keywords={[
+    "Coaching Kontakt",
+    "Life Coaching Termin",
+    "Online Coaching Erstgespräch",
+    "Mental Coaching Kontakt",
+  ]}
+  schema={pageSchema}
+>
   <Header currentPage="kontakt" />
 
   <main class="page-content">
@@ -41,20 +66,20 @@ const description = "Kontaktiere mich per Formular, E-Mail oder Telefon. Ich fre
             <div>
               <h3 class="text-h5 font-semibold text-primary-dark mb-spacing-md">Email</h3>
               <a
-                href="mailto:kontakt@christiane-meik-coaching.de"
+                href="mailto:info@meik-gesundheit.de"
                 class="text-accent-blue hover:text-accent-blue-dark font-semibold transition-colors break-all"
               >
-                kontakt@christiane-meik-coaching.de
+                info@meik-gesundheit.de
               </a>
             </div>
 
             <div>
               <h3 class="text-h5 font-semibold text-primary-dark mb-spacing-md">Telefon</h3>
               <a
-                href="tel:+49123456789"
+                href="tel:04043265481"
                 class="text-accent-blue hover:text-accent-blue-dark font-semibold transition-colors"
               >
-                +49 (0) 123 456789
+                040/43 26 54 81
               </a>
             </div>
 
