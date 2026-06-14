@@ -1,10 +1,3 @@
 User-agent: *
-Allow: /
+Disallow: /
 
-# Prevent indexing of utility/legal routes with little search intent
-Disallow: /404
-Disallow: /impressum
-Disallow: /datenschutz
-Disallow: /agb
-
-Sitemap: https://meiklifecoaching.de/sitemap-index.xml

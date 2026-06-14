@@ -1,64 +1,37 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-
-const title = "Seite nicht gefunden | 404";
-const description = "Die angeforderte Seite existiert nicht.";
-const toBase = (path: string) => {
-  const base = import.meta.env.BASE_URL.endsWith("/")
-    ? import.meta.env.BASE_URL
-    : `${import.meta.env.BASE_URL}/`;
-  return `${base}${path.replace(/^\/+/, "")}`;
-};
 ---
 
-<Layout {title} {description} noindex={true}>
-  <Header />
-
-  <main class="page-content">
-    <section class="section container mx-auto min-h-96 flex flex-col items-center justify-center">
-      <div class="text-center max-w-2xl">
-        <h1 class="text-8xl font-bold text-accent-blue mb-spacing-lg">404</h1>
-        <h2 class="text-h2 font-bold text-primary-dark mb-spacing-lg">
-          Seite nicht gefunden
-        </h2>
-        <p class="text-h5 text-text-secondary mb-spacing-lg">
-          Leider existiert die Seite, die du suchst, nicht. Vielleicht wurde sie verschoben oder umbenannt.
+<Layout
+  title="Wartungsarbeiten"
+  description="Die Website wird gerade aktualisiert. In Kürze sind wir wieder für Sie da."
+  noindex={true}
+>
+  <main class="min-h-screen flex items-center justify-center px-md py-3xl">
+    <div class="max-w-xl w-full bg-card-bg rounded-2xl shadow-md p-2xl text-center">
+      <p class="text-tiny uppercase tracking-widest text-text-tertiary mb-md">
+        Christiane Meik Coaching
+      </p>
+      <h1 class="text-h2-mobile md:text-h1 text-text-primary mb-lg">
+        Die Seite wird gerade aktualisiert.
+      </h1>
+      <p class="text-body text-text-secondary mb-lg">
+        Wir nehmen kurz redaktionelle Anpassungen vor und sind in Kürze wieder
+        für Sie erreichbar. Vielen Dank für Ihr Verständnis.
+      </p>
+      <div class="border-t border-accent-gray pt-lg mt-lg text-small text-text-tertiary">
+        <p class="mb-sm">Sie erreichen mich in dringenden Fällen direkt:</p>
+        <p>
+          <a class="text-accent-blue hover:text-accent-blue-dark underline" href="mailto:info@meik-gesundheit.de">
+            info@meik-gesundheit.de
+          </a>
         </p>
-
-        <div class="flex flex-col sm:flex-row gap-spacing-lg justify-center mt-spacing-xl">
-          <a
-            href={toBase("/")}
-            class="inline-block px-spacing-lg py-spacing-md bg-accent-blue text-white font-semibold rounded hover:bg-accent-blue-dark transition-colors"
-          >
-            Zur Startseite
+        <p class="mt-xs">
+          <a class="text-accent-blue hover:text-accent-blue-dark" href="tel:+494043265481">
+            +49 40 43265481
           </a>
-          <a
-            href={toBase("/coaching")}
-            class="inline-block px-spacing-lg py-spacing-md border-2 border-accent-blue text-accent-blue font-semibold rounded hover:bg-accent-blue hover:text-white transition-colors"
-          >
-            Zu meinen Angeboten
-          </a>
-        </div>
-
-        <div class="mt-spacing-2xl bg-primary-light p-spacing-lg rounded-lg">
-          <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">
-            Können wir dir helfen?
-          </h3>
-          <p class="text-body text-text-secondary">
-            Kontaktiere mich gerne, wenn du nicht findest, was du suchst.
-          </p>
-          <a
-            href={toBase("/kontakt")}
-            class="inline-block mt-spacing-md text-accent-blue font-semibold hover:text-accent-blue-dark transition-colors"
-          >
-            Kontakt aufnehmen →
-          </a>
-        </div>
+        </p>
       </div>
-    </section>
+    </div>
   </main>
-
-  <Footer />
 </Layout>

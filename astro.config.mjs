@@ -1,8 +1,7 @@
 import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
 
+// Maintenance branch: sitemap disabled while the site is offline for legal-text revisions.
 export default defineConfig({
-  integrations: [sitemap()],
   site: 'https://meiklifecoaching.de',
   output: 'static',
   outDir: './dist',
