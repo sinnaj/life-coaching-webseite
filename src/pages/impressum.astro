@@ -1,0 +1,70 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const title = "Impressum | Christiane Meik Coaching";
+const description = "Impressum und Kontaktinformationen";
+---
+
+<Layout {title} {description} noindex={true}>
+  <Header />
+
+  <main class="page-content">
+    <section class="section container mx-auto max-w-3xl">
+      <h1 class="text-h1 font-bold mb-spacing-lg">Impressum</h1>
+
+      <div class="space-y-spacing-lg text-body text-text-secondary">
+        <div>
+          <h2 class="text-h3 font-bold text-primary-dark mb-spacing-md">Angaben gemäß § 5 TMG (Telemediengesetz):</h2>
+          <p>
+            Dipl.-Päd. Christiane Meik<br />
+            Barenbleek 10<br />
+            22179 Hamburg
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-h3 font-bold text-primary-dark mb-spacing-md">Kontakt:</h2>
+          <p>
+            Tel.: <a href="tel:+494043265481" class="text-accent-blue hover:underline">040/43 26 54 81</a><br />
+            E-Mail: <a href="mailto:info@meik-gesundheit.de" class="text-accent-blue hover:underline">info(at)meik-gesundheit.de</a><br />
+            Web: <a href="https://www.meiklifecoaching.de" class="text-accent-blue hover:underline">www.meiklifecoaching.de</a>
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-h3 font-bold text-primary-dark mb-spacing-md">Berufsbezeichnung & berufsrechtliche Angaben:</h2>
+          <p class="mb-spacing-md">
+            <strong>Diplom-Pädagogin</strong> (Westfälische Wilhelms-Universität Münster); am 25.05.1985 fand die Verleihung des akademischen Grades Diplom-Pädagoge, gemäß der Diplom-Prüfungsordnung vom 10.7.1970 in der zur Zeit geltenden Fassung, statt.
+          </p>
+          <p>
+            <strong>Heilpraktikerin für Psychotherapie</strong> – Erlaubnis zur berufsmäßigen Ausübung der Heilkunde beschränkt auf das Gebiet der Psychotherapie, ohne Bestallung – (Heilpraktikergesetz) vom 17.02.1939 (Reichsgesetzblatt 1 S. 251; BGBl. III 2122-2) – erteilt am 15.03.1996 durch die Behörde für Arbeit, Gesundheit und Soziales – Freie und Hansestadt Hamburg, AZ 6224.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-h3 font-bold text-primary-dark mb-spacing-md">Steuerliche Angaben:</h2>
+          <p>
+            St.-Nr.: 43/157/04028<br />
+            IdNr.: 49 657 015 828
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-h3 font-bold text-primary-dark mb-spacing-md">Verantwortlich für den Inhalt (gem. § 55 Abs. 2 RStV):</h2>
+          <p>Christiane Meik (Anschrift wie oben)</p>
+        </div>
+
+        <div>
+          <h2 class="text-h3 font-bold text-primary-dark mb-spacing-md">Haftungshinweis:</h2>
+          <p>
+            Für Links auf externe Seiten wird keine Haftung übernommen. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
