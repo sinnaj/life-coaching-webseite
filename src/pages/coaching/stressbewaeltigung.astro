@@ -1,0 +1,145 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import HeroSection from "../../components/HeroSection.astro";
+import ContactForm from "../../components/ContactForm.astro";
+
+const title = "Stressbewältigung | Gelassen & sicher im Stress";
+const description = "Wissenschaftlich fundiertes Stressbewältigungs-Programm. Lerne, Stressmuster zu erkennen und mit Belastungen achtsamer umzugehen.";
+const toBase = (path: string) => {
+  const base = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  return `${base}${path.replace(/^\/+/, "")}`;
+};
+const siteOrigin = Astro.site ?? new URL("https://sinnaj.github.io");
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Stressbewältigung Online",
+  description,
+  provider: {
+    "@type": "Person",
+    name: "Christiane Meik",
+  },
+  serviceType: "Stressbewältigung",
+  areaServed: "DE",
+  availableChannel: {
+    "@type": "ServiceChannel",
+    serviceUrl: new URL(toBase("/coaching/stressbewaeltigung"), siteOrigin).toString(),
+    availableLanguage: ["de"],
+  },
+};
+---
+
+<Layout
+  {title}
+  {description}
+  keywords={[
+    "Stressbewältigung online",
+    "Stress Coaching",
+    "Resilienz aufbauen",
+    "Stressmuster erkennen",
+  ]}
+  schema={pageSchema}
+>
+  <Header currentPage="coaching" />
+
+  <main class="page-content">
+    <HeroSection
+      title="Gelassen und sicher im Stress"
+      subtitle="Stressbewältigung"
+      description="Stressmuster erkennen und mit Belastungen achtsamer umgehen. Ein wissenschaftlich fundiertes 6-Wochen-Programm."
+      ctaText="Termin anfragen"
+      ctaHref="/kontakt"
+      bgColor="dark"
+      image={toBase("/images/stressbewaeltigung-cool-pose-christiane.png")}
+    />
+
+    <section class="section container mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Das Programm nach Prof. Dr. G. Kaluza</h2>
+        
+        <p class="text-body text-text-secondary mb-spacing-lg">
+          Dieses Programm basiert auf dem wissenschaftlich fundierten Konzept von Prof. Dr. G. Kaluza zur Stressbewältigung. Es kombiniert theoretisches Wissen mit praktischen Übungen.
+        </p>
+
+        <div class="bg-primary-light p-spacing-lg rounded-lg mb-spacing-lg">
+          <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Vier Säulen:</h3>
+          <div class="space-y-spacing-md">
+            <div class="flex gap-spacing-md items-start">
+              <span class="text-accent-blue font-bold">1</span>
+              <div>
+                <p class="font-semibold">Stresswahrnehmung</p>
+                <p class="text-sm text-text-secondary">Verstehen, wie du Stress wahrnimmst und verarbeitest</p>
+              </div>
+            </div>
+            <div class="flex gap-spacing-md items-start">
+              <span class="text-accent-blue font-bold">2</span>
+              <div>
+                <p class="font-semibold">Regeneration</p>
+                <p class="text-sm text-text-secondary">Techniken zur Entspannung und Erholung</p>
+              </div>
+            </div>
+            <div class="flex gap-spacing-md items-start">
+              <span class="text-accent-blue font-bold">3</span>
+              <div>
+                <p class="font-semibold">Stressabbau</p>
+                <p class="text-sm text-text-secondary">Konkrete Strategien zur Stressreduktion</p>
+              </div>
+            </div>
+            <div class="flex gap-spacing-md items-start">
+              <span class="text-accent-blue font-bold">4</span>
+              <div>
+                <p class="font-semibold">Ressourcenaufbau</p>
+                <p class="text-sm text-text-secondary">Stärkung deiner inneren Widerstandskraft</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt container mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Ablauf und Details</h2>
+        
+        <div class="space-y-spacing-md mb-spacing-lg">
+          <div class="bg-white p-spacing-lg rounded-lg border-t-4 border-accent-blue">
+            <p class="text-h5 font-bold text-primary-dark mb-spacing-md">Format</p>
+            <p class="text-body">Online via Zoom</p>
+          </div>
+          <div class="bg-white p-spacing-lg rounded-lg border-t-4 border-accent-blue">
+            <p class="text-h5 font-bold text-primary-dark mb-spacing-md">Dauer</p>
+            <p class="text-body">6 Sitzungen à 60 Minuten</p>
+          </div>
+          <div class="bg-white p-spacing-lg rounded-lg border-t-4 border-accent-blue">
+            <p class="text-h5 font-bold text-primary-dark mb-spacing-md">Zeitraum</p>
+            <p class="text-body">6 Wochen, 1x pro Woche</p>
+          </div>
+          <div class="bg-white p-spacing-lg rounded-lg border-t-4 border-accent-blue">
+            <p class="text-h5 font-bold text-primary-dark mb-spacing-md">Preis</p>
+            <p class="text-body text-h5 font-bold text-accent-blue">600 €</p>
+          </div>
+        </div>
+
+        <p class="text-body text-text-secondary bg-accent-light p-spacing-lg rounded-lg">
+          Begleitunterlagen und Entspannungsübungen sind im Programm enthalten.
+        </p>
+      </div>
+    </section>
+
+    <section class="section container mx-auto">
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg text-center">Bereit für mehr Ruhe?</h2>
+        <p class="text-center text-body text-text-secondary mb-spacing-xl">
+          Vereinbare ein Erstgespräch.
+        </p>
+        <ContactForm />
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

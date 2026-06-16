@@ -1,0 +1,155 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import HeroSection from "../../components/HeroSection.astro";
+import ContactForm from "../../components/ContactForm.astro";
+
+const title = "Alkohol selbstbestimmt – Kontrolliert trinken | Mental-Coaching";
+const description = "Bewusst weniger trinken, ohne komplett zu verzichten. Psychologisch fundiertes Coaching für mehr Selbstbestimmung.";
+const toBase = (path: string) => {
+  const base = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  return `${base}${path.replace(/^\/+/, "")}`;
+};
+const siteOrigin = Astro.site ?? new URL("https://sinnaj.github.io");
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Alkohol selbstbestimmt - Kontrolliert trinken",
+  description,
+  provider: {
+    "@type": "Person",
+    name: "Christiane Meik",
+  },
+  serviceType: "Kontrolliertes Trinken",
+  areaServed: "DE",
+  availableChannel: {
+    "@type": "ServiceChannel",
+    serviceUrl: new URL(toBase("/coaching/alkohol-selbstbestimmt"), siteOrigin).toString(),
+    availableLanguage: ["de"],
+  },
+};
+---
+
+<Layout
+  {title}
+  {description}
+  keywords={[
+    "kontrolliertes Trinken",
+    "Alkohol selbstbestimmt",
+    "weniger Alkohol trinken",
+    "Coaching Suchtprävention",
+  ]}
+  schema={pageSchema}
+>
+  <Header currentPage="coaching" />
+
+  <main class="page-content">
+    <HeroSection
+      title="Alkohol selbstbestimmt"
+      subtitle="Kontrolliert trinken"
+      description="Selbstbestimmt und bewusst weniger trinken, ohne komplett zu verzichten. Individuelle Strategien für mehr Autonomie und Wohlbefinden."
+      ctaText="Termin anfragen"
+      ctaHref="/kontakt"
+      bgColor="dark"
+      image={toBase("/images/kontrolliertes-trinken-weniger-is-mehr.jpg")}
+    />
+
+    <section class="section container mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Das Programm des kontrollierten Trinkens nach Prof. Dr. J. Körkel.</h2>
+        <p class="text-body text-text-secondary mb-spacing-lg">
+          Kontrolliertes Trinken bedeutet nicht Abstinenz, sondern einen bewussten, selbstbestimmten Umgang mit Alkohol. Es geht darum, deine Beziehung zum Alkohol zu verstehen und so zu gestalten, dass sie zu deinem Leben passt.
+        </p>
+
+        <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Der Fokus liegt auf:</h3>
+        <div class="space-y-spacing-md bg-primary-light p-spacing-lg rounded-lg mb-spacing-lg">
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue font-bold">•</span>
+            <p class="text-body">Verständnis für deine Trinkmuster und Auslöser</p>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue font-bold">•</span>
+            <p class="text-body">Bewusster Umgang mit Alkohol statt automatisches Verhalten</p>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue font-bold">•</span>
+            <p class="text-body">Strategien für schwierige Situationen</p>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue font-bold">•</span>
+            <p class="text-body">Innere Ressourcen stärken für mehr Selbstkontrolle</p>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue font-bold">•</span>
+            <p class="text-body">Neue, gesunde Bewältigungsstrategien</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt container mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Die Programmstruktur</h2>
+        
+        <div class="space-y-spacing-lg mb-spacing-lg">
+          <div class="bg-white p-spacing-lg rounded-lg border-l-4 border-accent-blue">
+            <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">
+              1. Sitzung: Analyse &amp; Zielklärung
+            </h3>
+            <p class="text-body text-text-secondary">
+              Wir schauen gemeinsam auf deine aktuelle Situation, deine Trinkmuster und deine Ziele. Was möchtest du konkret verändern?
+            </p>
+          </div>
+
+          <div class="bg-white p-spacing-lg rounded-lg border-l-4 border-accent-blue">
+            <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">
+              Sitzungen 2-7: Coaching &amp; Strategieentwicklung
+            </h3>
+            <p class="text-body text-text-secondary">
+              Wir arbeiten an konkreten Strategien, identifizieren deine Ressourcen und entwickeln Wege, bewusster mit Alkohol umzugehen. Regelmäßiges Coaching gibt dir Sicherheit und Unterstützung.
+            </p>
+          </div>
+        </div>
+
+        <p class="text-body text-text-secondary bg-accent-light p-spacing-lg rounded-lg">
+          <strong>Gesamt:</strong> 1 + 6 Sitzungen à 60 Minuten, flexibel über 8-12 Wochen verteilt. Du entscheidest das Tempo.
+        </p>
+      </div>
+    </section>
+
+    <section class="section container mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Preise</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-spacing-lg">
+          <div class="bg-accent-blue text-white p-spacing-lg rounded-lg">
+            <p class="text-h5 font-bold mb-spacing-sm">Erste Sitzung: Analyse &amp; Zieklärung</p>
+            <p class="text-h3 font-bold">103,50€</p>
+            <p class="text-sm opacity-90">für 60 Min. Coaching + Material</p>
+          </div>
+
+          <div class="bg-accent-light text-primary-dark p-spacing-lg rounded-lg border-2 border-accent-blue">
+            <p class="text-h5 font-bold mb-spacing-sm">Coachingpaket: Kontrolliertes trinken</p>
+            <p class="text-h3 font-bold">626,50€</p>
+            <p class="text-sm">6 Sitzungen à 60 Minuten + Material</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt container mx-auto">
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg text-center">Bereit für einen bewussteren Umgang?</h2>
+        <p class="text-center text-body text-text-secondary mb-spacing-xl">
+          Vereinbare ein Erstgespräch.
+        </p>
+        <ContactForm />
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

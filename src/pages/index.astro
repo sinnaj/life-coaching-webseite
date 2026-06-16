@@ -1,37 +1,295 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import HeroSection from "../components/HeroSection.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import TrustChip from "../components/TrustChip.astro";
+import Button from "../components/Button.astro";
+import ContactForm from "../components/ContactForm.astro";
+
+const title = "Psychologisch fundiertes Life Coaching & Mental-Coaching Online | Christiane Meik";
+const description = "Online Life Coaching für Persönlichkeitsentwicklung, Stressabbau und Raucherentwöhnung. Psychologisch fundiert, empathisch, praxisnah. Termin jetzt anfragen.";
+const toBase = (path: string) => {
+  const base = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  return `${base}${path.replace(/^\/+/, "")}`;
+};
+const siteOrigin = Astro.site ?? new URL("https://sinnaj.github.io");
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: title,
+  description,
+  url: new URL(toBase("/"), siteOrigin).toString(),
+  inLanguage: "de-DE",
+  about: [
+    "Life Coaching",
+    "Mental-Coaching",
+    "Stressbewältigung",
+    "Raucherentwöhnung",
+    "Autogenes Training",
+    "Kontrolliertes Trinken",
+  ],
+};
 ---
 
 <Layout
-  title="Wartungsarbeiten"
-  description="Die Website wird gerade aktualisiert. In Kürze sind wir wieder für Sie da."
-  noindex={true}
+  {title}
+  {description}
+  ogImage={toBase("/images/christiane-headshot-professional.jpeg")}
+  keywords={[
+    "Life Coaching Online",
+    "Mental Coaching",
+    "Stressbewältigung",
+    "Raucherentwöhnung",
+    "Autogenes Training",
+    "kontrolliertes Trinken",
+    "Christiane Meik",
+  ]}
+  schema={pageSchema}
 >
-  <main class="min-h-screen flex items-center justify-center px-md py-3xl">
-    <div class="max-w-xl w-full bg-card-bg rounded-2xl shadow-md p-2xl text-center">
-      <p class="text-tiny uppercase tracking-widest text-text-tertiary mb-md">
-        Christiane Meik Coaching
+  <Header currentPage="home" />
+
+  <main class="page-content">
+    <!-- Hero Section -->
+    <HeroSection
+      title="Psychologisch fundiertes Life- und Mental-Coaching"
+      subtitle="Online Coaching"
+      description="Ich unterstütze Menschen dabei, nachhaltige Veränderungen zu erreichen – mit einem psychologisch fundierten, praxisnahen und wertschätzenden Coachingansatz."
+      ctaText="Termin anfragen"
+      ctaHref="/kontakt"
+      bgColor="dark"
+    />
+
+    <!-- Trust Strip -->
+    <section class="bg-white py-spacing-lg px-spacing-md border-b-2 border-primary-light">
+      <div class="container mx-auto flex flex-wrap justify-center gap-spacing-lg">
+        <TrustChip text="Psychologisch fundiert" />
+        <TrustChip text="Online via Zoom" />
+        <TrustChip text="Langjährige Erfahrung" />
+        <TrustChip text="Transparente Preise" />
+      </div>
+    </section>
+
+    <!-- Key Services Section -->
+    <section class="section container mx-auto">
+      <h2 class="text-h2 font-bold text-center mb-spacing-xl">Meine Schwerpunkte</h2>
+      <p class="text-center text-body text-text-secondary max-w-2xl mx-auto mb-spacing-2xl">
+        Mehr Klarheit, innere Stärke und Balance im Alltag. Gemeinsam arbeiten wir an deinen persönlichen Zielen.
       </p>
-      <h1 class="text-h2-mobile md:text-h1 text-text-primary mb-lg">
-        Die Seite wird gerade aktualisiert.
-      </h1>
-      <p class="text-body text-text-secondary mb-lg">
-        Wir nehmen kurz redaktionelle Anpassungen vor und sind in Kürze wieder
-        für Sie erreichbar. Vielen Dank für Ihr Verständnis.
-      </p>
-      <div class="border-t border-accent-gray pt-lg mt-lg text-small text-text-tertiary">
-        <p class="mb-sm">Sie erreichen mich in dringenden Fällen direkt:</p>
-        <p>
-          <a class="text-accent-blue hover:text-accent-blue-dark underline" href="mailto:info@meik-gesundheit.de">
-            info@meik-gesundheit.de
-          </a>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-spacing-lg">
+        <ServiceCard
+          title="Persönlichkeitsentwicklung"
+          description="Mehr Selbstvertrauen, emotionale Balance und bewusstes Handeln entwickeln."
+          href={toBase("/coaching/life-coaching")}
+          imageSrc={toBase("/images/online-coaching.png")}
+          imageAlt="Online Coaching für Persönlichkeitsentwicklung"
+          imagePosition="50% 18%"
+          imageFit="contain"
+        />
+        <ServiceCard
+          title="Stressbewältigung"
+          description="Stressmuster erkennen und mit Belastungen gelassener umgehen."
+          href={toBase("/coaching/stressbewaeltigung")}
+          imageSrc={toBase("/images/stressbewaeltigung-cool-pose-christiane.png")}
+          imageAlt="Stressbewältigung am Strand"
+          imagePosition="50% 0%"
+        />
+        <ServiceCard
+          title="Raucherentwöhnung"
+          description="Endlich rauchfrei werden mit Hypnose und Mental-Coaching."
+          href={toBase("/coaching/raucherentwohnung")}
+          imageSrc={toBase("/images/rauchfrei-beach.jpg")}
+          imageAlt="Raucherentwöhnung mit Fokus auf Rauchfreiheit"
+          imagePosition="50% 0%"
+        />
+        <ServiceCard
+          title="Alkohol & Selbstbestimmung"
+          description="Selbstbestimmt und bewusst weniger trinken, ohne komplett zu verzichten."
+          href={toBase("/coaching/alkohol-selbstbestimmt")}
+          imageSrc={toBase("/images/kontrolliertes-trinken-weniger-is-mehr.jpg")}
+          imageAlt="Kontrolliertes Trinken und bewusster Umgang"
+        />
+        <ServiceCard
+          title="Autogenes Training"
+          description="Schnell zur Ruhe kommen und innere Balance stärken."
+          href={toBase("/coaching/autogenes-training")}
+          imageSrc={toBase("/images/autogenes-training-beach.png")}
+          imageAlt="Autogenes Training zur Entspannung"
+        />
+        <ServiceCard
+          title="Alle Angebote"
+          description="Entdecke alle Coaching-Programme im Detail mit Preisen und Ablauf."
+          href={toBase("/coaching")}
+          highlight={true}
+        />
+      </div>
+    </section>
+
+    <!-- How Online Coaching Works -->
+    <section class="section section-alt container mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Finde deine Balance – mit persönlichem Online-Coaching</h2>
+        
+        <p class="text-body text-text-secondary mb-spacing-lg">
+          In meinem Online-Coaching via Zoom arbeiten wir gemeinsam daran, mehr Klarheit, innere Stärke und Wohlbefinden in dein Leben zu bringen – bequem von zuhause aus. Alles, was du brauchst, ist ein internetfähiges Gerät wie Laptop, Tablet oder Smartphone.
         </p>
-        <p class="mt-xs">
-          <a class="text-accent-blue hover:text-accent-blue-dark" href="tel:+494043265481">
-            +49 40 43265481
+
+        <p class="text-body text-text-secondary mb-spacing-2xl">
+          Erlebe, wie viel möglich wird, wenn du mit Klarheit, Motivation und Vertrauen neue Schritte gehst.
+        </p>
+
+        <div class="space-y-spacing-md bg-white p-spacing-lg rounded-lg border-l-4 border-accent-blue">
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-h4 text-accent-blue font-bold min-w-fit">•</span>
+            <p class="text-body"><strong>Online via Zoom</strong> – von überall aus</p>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-h4 text-accent-blue font-bold min-w-fit">•</span>
+            <p class="text-body"><strong>Flexibel</strong> in deinem Alltag</p>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-h4 text-accent-blue font-bold min-w-fit">•</span>
+            <p class="text-body"><strong>Vertraulich und sicher</strong> mit psychologischem Know-how</p>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-h4 text-accent-blue font-bold min-w-fit">•</span>
+            <p class="text-body"><strong>100 €</strong> für 60 Minuten</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Preview Section -->
+    <section class="section container mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-spacing-2xl items-center">
+        <!-- Headshot Image -->
+        <div class="rounded-lg overflow-hidden shadow-lg">
+          <img
+            src={toBase("/images/christiane-headshot-professional.jpeg")}
+            alt="Christiane Meik - Diplom-Pädagogin und Mental-Coach"
+            class="w-full h-auto object-cover"
+          />
+        </div>
+
+        <!-- About Content -->
+        <div>
+          <h2 class="text-h2 font-bold mb-spacing-lg">Wer ich bin</h2>
+          
+          <p class="text-body text-text-secondary mb-spacing-lg">
+            Ich bin Diplom-Pädagogin und zertifizierte Trainerin mit langjähriger therapeutischer Erfahrung. Als Sozialtherapeutin mit Schwerpunkt Sucht und Mental-Coach verbinde ich wissenschaftliche Erkenntnisse mit alltagstauglichen Strategien.
+          </p>
+
+          <p class="text-body text-text-secondary mb-spacing-lg">
+            Von 2003 bis 2025 habe ich in meiner eigenen Privatpraxis als Heilpraktikerin für Psychotherapie gearbeitet. Ab 2026 fokussiere ich mich auf psychologisch fundiertes Mental-Coaching für Stressbewältigung, Entspannung, Raucherentwöhnung und kontrolliertes Trinken.
+          </p>
+
+          <a
+            href={toBase("/profil")}
+            class="inline-block px-spacing-lg py-spacing-md bg-accent-blue text-white font-semibold rounded hover:bg-accent-blue-dark transition-colors"
+          >
+            Zum vollständigen Profil
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section section-alt container mx-auto">
+      <h2 class="text-h2 font-bold text-center mb-spacing-xl">So funktioniert's</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-spacing-lg">
+        <div class="bg-white p-spacing-lg rounded-lg text-center">
+          <div class="text-h2 font-bold text-accent-blue mb-spacing-md">1</div>
+          <h3 class="text-h4 font-bold mb-spacing-md">Anfrage senden</h3>
+          <p class="text-body text-text-secondary">
+            Nimm per Formular oder E-Mail Kontakt auf und beschreibe kurz, was dich bewegt.
+          </p>
+        </div>
+
+        <div class="bg-white p-spacing-lg rounded-lg text-center">
+          <div class="text-h2 font-bold text-accent-blue mb-spacing-md">2</div>
+          <h3 class="text-h4 font-bold mb-spacing-md">Erstgespräch vereinbaren</h3>
+          <p class="text-body text-text-secondary">
+            Wir klären deine Ziele, prüfen die Passung und schauen gemeinsam, welches Angebot am besten passt.
+          </p>
+        </div>
+
+        <div class="bg-white p-spacing-lg rounded-lg text-center">
+          <div class="text-h2 font-bold text-accent-blue mb-spacing-md">3</div>
+          <h3 class="text-h4 font-bold mb-spacing-md">Coaching starten</h3>
+          <p class="text-body text-text-secondary">
+            Du entscheidest dich für das passende Programm und wir starten in deinem Tempo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Coaching Approach Section -->
+    <section class="section container mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Ein Coaching-Ansatz, der wirkt</h2>
+        
+        <p class="text-body text-text-secondary mb-spacing-lg">
+          Das Coaching verbindet psychologische Erkenntnisse mit alltagstauglichen Strategien und individueller Begleitung. Ziel ist eine langfristige Veränderung hin zu mehr Klarheit, innerer Stärke und Lebensqualität.
+        </p>
+
+        <p class="text-body text-text-secondary mb-spacing-lg">
+          Das Coaching ist lösungsorientiert, empathisch und auf die persönliche Lebenssituation abgestimmt.
+        </p>
+
+        <div class="bg-accent-light border-l-4 border-accent-blue p-spacing-lg rounded-r-lg">
+          <p class="text-sm text-text-secondary">
+            <strong>Wichtig:</strong> Es ersetzt keine Psychotherapie, kann jedoch eine wertvolle Unterstützung bei persönlicher Entwicklung und Prävention sein. Bei psychischen Belastungen oder Erkrankungen konsultiere bitte einen Facharzt oder Psychotherapeuten.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Motivation Section -->
+    <section class="section section-alt container mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Meine Motivation</h2>
+        
+        <p class="text-body text-text-secondary mb-spacing-lg">
+          Meine Motivation, psychologisch fundiertes Coaching anzubieten, entspringt dem tiefen Wunsch, Menschen auf ihrem Weg zu mehr Lebensqualität, Balance und innerer Stärke zu begleiten.
+        </p>
+
+        <p class="text-body text-text-secondary mb-spacing-lg">
+          Ich glaube daran und weiß aus eigenen Erfahrungen, dass jeder Mensch das Potenzial hat, aktiv etwas für sein Wohlbefinden zu tun – körperlich, mental und emotional.
+        </p>
+
+        <p class="text-body text-text-secondary">
+          In einer Zeit, in der Stress, Leistungsdruck und Alltagsbelastungen immer mehr zunehmen, möchte ich einen Raum schaffen, in dem Menschen wieder in Kontakt mit sich selbst kommen, auf ihre Bedürfnisse hören und gesunde Routinen entwickeln können.
         </p>
       </div>
-    </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="section bg-primary-dark text-white container mx-auto">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Bereit für deinen nächsten Schritt?</h2>
+        <p class="text-body text-accent-gray mb-spacing-lg">
+          Ein Erstgespräch ist der beste Weg, um zu klären, ob und wie wir zusammenpassen.
+        </p>
+        <a
+          href={toBase("/kontakt")}
+          class="inline-block px-spacing-lg py-spacing-md bg-accent-blue text-white font-semibold rounded hover:bg-accent-blue-dark transition-colors"
+        >
+          Termin anfragen
+        </a>
+      </div>
+    </section>
   </main>
+
+  <Footer />
 </Layout>
+
+<style>
+  body {
+    @apply bg-page-bg;
+  }
+</style>

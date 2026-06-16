@@ -1,0 +1,296 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import HeroSection from "../components/HeroSection.astro";
+
+const title = "Über mich | Christiane Meik";
+const description = "Lerne meine Geschichte, meine Motivation, meine Qualifikationen und meinen Coaching-Ansatz kennen.";
+const toBase = (path: string) => {
+  const base = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  return `${base}${path.replace(/^\/+/, "")}`;
+};
+const siteOrigin = Astro.site ?? new URL("https://sinnaj.github.io");
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  name: title,
+  description,
+  url: new URL(toBase("/profil"), siteOrigin).toString(),
+  inLanguage: "de-DE",
+  mainEntity: {
+    "@type": "Person",
+    name: "Christiane Meik",
+    jobTitle: "Mental-Coach",
+    description: "Diplom-Pädagogin und Mental-Coach mit langjähriger Erfahrung.",
+  },
+};
+---
+
+<Layout
+  {title}
+  {description}
+  ogImage={toBase("/images/christiane-headshot-professional.jpeg")}
+  keywords={[
+    "Christiane Meik",
+    "Mental Coach Profil",
+    "Diplom Pädagogin Coaching",
+    "Erfahrung Stressbewältigung",
+  ]}
+  schema={pageSchema}
+>
+  <Header currentPage="profil" />
+
+  <main class="page-content">
+    <!-- Hero Section -->
+    <HeroSection
+      title="Über mich"
+      subtitle="Wer ich bin und warum ich coache"
+      description="Ich bin Diplom-Pädagogin, Mental-Coach und zertifizierte Trainerin mit langjähriger psychotherapeutischer Erfahrung."
+      bgColor="dark"
+    />
+
+    <!-- Main Content -->
+    <section class="section container mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-spacing-2xl items-start">
+        <!-- Headshot Image -->
+        <div class="lg:col-span-1">
+          <img
+            src={toBase("/images/christiane-headshot-professional.jpeg")}
+            alt="Christiane Meik - Diplom-Pädagogin und Mental-Coach"
+            class="rounded-lg w-full h-auto shadow-lg"
+          />
+        </div>
+
+        <!-- Content -->
+        <div class="lg:col-span-2">
+          <h2 class="text-h2 font-bold mb-spacing-lg">Wer ich bin</h2>
+
+          <p class="text-body text-text-secondary mb-spacing-lg">
+            Ich bin Diplom-Pädagogin, Mental-Coach und zertifizierte Trainerin mit langjähriger psychotherapeutischer Erfahrung. Als Sozialtherapeutin mit Schwerpunkt Sucht und Mental-Coach verbinde ich wissenschaftliche Erkenntnisse mit alltagstauglichen Strategien.
+          </p>
+
+          <p class="text-body text-text-secondary mb-spacing-lg">
+            Von 2003 bis 2025 habe ich in meiner eigenen Privatpraxis als Heilpraktikerin für Psychotherapie gearbeitet. Ab 2026 fokussiere ich mich auf psychologisch fundiertes Mental-Coaching für Stressbewältigung, Entspannung, Raucherentwöhnung und kontrolliertes Trinken.
+          </p>
+
+          <h3 class="text-h3 font-bold text-primary-dark mb-spacing-lg mt-spacing-xl">Qualifikationen</h3>
+
+          <div class="space-y-spacing-md">
+            <div class="flex gap-spacing-md items-start bg-primary-light p-spacing-md rounded">
+              <span class="text-accent-blue font-bold text-h4">✓</span>
+              <div>
+                <p class="font-semibold text-primary-dark">Diplom-Pädagogin</p>
+                <p class="text-sm text-text-secondary">Universität, 1985</p>
+              </div>
+            </div>
+
+            <div class="flex gap-spacing-md items-start bg-primary-light p-spacing-md rounded">
+              <span class="text-accent-blue font-bold text-h4">✓</span>
+              <div>
+                <p class="font-semibold text-primary-dark">Sozialtherapeutin, Schwerpunkt Sucht</p>
+                <p class="text-sm text-text-secondary">1989</p>
+              </div>
+            </div>
+
+            <div class="flex gap-spacing-md items-start bg-primary-light p-spacing-md rounded">
+              <span class="text-accent-blue font-bold text-h4">✓</span>
+              <div>
+                <p class="font-semibold text-primary-dark">Heilpraktikerin Psychotherapie</p>
+                <p class="text-sm text-text-secondary">1996</p>
+              </div>
+            </div>
+
+            <div class="flex gap-spacing-md items-start bg-primary-light p-spacing-md rounded">
+              <span class="text-accent-blue font-bold text-h4">✓</span>
+              <div>
+                <p class="font-semibold text-primary-dark">Gestalttherapeutin</p>
+                <p class="text-sm text-text-secondary">1999, TIB</p>
+              </div>
+            </div>
+
+            <div class="flex gap-spacing-md items-start bg-primary-light p-spacing-md rounded">
+              <span class="text-accent-blue font-bold text-h4">✓</span>
+              <div>
+                <p class="font-semibold text-primary-dark">Hypnosetherapeutin Milton Erickson</p>
+                <p class="text-sm text-text-secondary">2013</p>
+              </div>
+            </div>
+
+            <div class="flex gap-spacing-md items-start bg-primary-light p-spacing-md rounded">
+              <span class="text-accent-blue font-bold text-h4">✓</span>
+              <div>
+                <p class="font-semibold text-primary-dark">Mental-Coach AHAB</p>
+                <p class="text-sm text-text-secondary">2015</p>
+              </div>
+            </div>
+
+            <div class="flex gap-spacing-md items-start bg-primary-light p-spacing-md rounded">
+              <span class="text-accent-blue font-bold text-h4">✓</span>
+              <div>
+                <p class="font-semibold text-primary-dark">Hypnose-Coach</p>
+                <p class="text-sm text-text-secondary">2019, TMI</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="text-h3 font-bold text-primary-dark mb-spacing-lg mt-spacing-xl">Mein Weg</h3>
+
+          <p class="text-body text-text-secondary">
+            Über mehr als 20 Jahre habe ich hunderte Menschen in schwierigen Lebenssituationen begleitet. Diese umfangreiche Erfahrung hat mich gelehrt, Menschen in ihrer Vielfalt wahrzunehmen, zu verstehen und professionell zu unterstützen.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="section section-alt container mx-auto">
+      <h2 class="text-h2 font-bold mb-spacing-xl text-center">Meine Werte im Coaching</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-spacing-lg max-w-4xl mx-auto">
+        <div class="bg-white p-spacing-lg rounded-lg border-t-4 border-accent-blue">
+          <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Empathie</h3>
+          <p class="text-body text-text-secondary">
+            Ich höre wirklich zu und verstehe deine Situation aus echtem Interesse heraus.
+          </p>
+        </div>
+
+        <div class="bg-white p-spacing-lg rounded-lg border-t-4 border-accent-blue">
+          <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Fachkompetenz</h3>
+          <p class="text-body text-text-secondary">
+            Mein Wissen beruht auf wissenschaftlichen Erkenntnissen und jahrelanger praktischer Erfahrung.
+          </p>
+        </div>
+
+        <div class="bg-white p-spacing-lg rounded-lg border-t-4 border-accent-blue">
+          <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Verlässlichkeit</h3>
+          <p class="text-body text-text-secondary">
+            Du kannst dich auf meine Zusagen verlassen. Diskretion ist selbstverständlich.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Meine Motivation</h2>
+
+        <p class="text-h4 text-text-secondary leading-relaxed mb-spacing-lg">
+          Meine Motivation, psychologisch fundiertes Coaching anzubieten, entspringt dem tiefen Wunsch, Menschen auf ihrem Weg zu mehr Lebensqualität, Balance und innerer Stärke zu begleiten.
+        </p>
+
+        <p class="text-body text-text-secondary mb-spacing-lg">
+          Ich glaube daran und weiß aus eigenen Erfahrungen, dass jeder Mensch das Potenzial hat, aktiv etwas für sein Wohlbefinden zu tun, körperlich, mental und emotional.
+        </p>
+
+        <p class="text-body text-text-secondary">
+          In einer Zeit, in der Stress, Leistungsdruck und Alltagsbelastungen immer mehr zunehmen, möchte ich einen Raum schaffen, in dem Menschen wieder in Kontakt mit sich selbst kommen, auf ihre Bedürfnisse hören und gesunde Routinen entwickeln können.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-alt container mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Meine Erfahrungen</h2>
+
+        <div class="space-y-spacing-lg">
+          <div class="bg-white p-spacing-lg rounded-lg border-l-4 border-accent-blue">
+            <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Jede Person ist wertvoll</h3>
+            <p class="text-body text-text-secondary">
+              Unabhängig von Hintergrund, Erfolg oder aktuellen Herausforderungen verdient jeder Mensch Unterstützung und Respekt auf seinem persönlichen Weg.
+            </p>
+          </div>
+
+          <div class="bg-white p-spacing-lg rounded-lg border-l-4 border-accent-blue">
+            <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Kleine Schritte wirken</h3>
+            <p class="text-body text-text-secondary">
+              Große Veränderungen entstehen oft aus vielen kleinen, bewussten Schritten. Es geht nicht um Perfektion, sondern um kontinuierliche Entwicklung.
+            </p>
+          </div>
+
+          <div class="bg-white p-spacing-lg rounded-lg border-l-4 border-accent-blue">
+            <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Du bleibst du selbst</h3>
+            <p class="text-body text-text-secondary">
+              Du bleibst du. Und gleichzeitig kannst du etwas Neues entwickeln: mehr Klarheit, Ruhe und Vertrauen.
+            </p>
+          </div>
+
+          <div class="bg-white p-spacing-lg rounded-lg border-l-4 border-accent-blue">
+            <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Verstehen stärkt Entwicklung</h3>
+            <p class="text-body text-text-secondary">
+              Wenn Menschen ihre Muster erkennen, wird Veränderung möglich. Verständnis ist der erste Schritt in eine positive Entwicklung.
+            </p>
+          </div>
+
+          <div class="bg-white p-spacing-lg rounded-lg border-l-4 border-accent-blue">
+            <h3 class="text-h4 font-bold text-primary-dark mb-spacing-md">Innere Blockaden lösen funktioniert</h3>
+            <p class="text-body text-text-secondary">
+              Menschen haben oft mehr innere Kraft, als sie sich selbst zutrauen. Es geht darum, diese vorhandenen Ressourcen zu sehen und zu nutzen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Meine Vision</h2>
+
+        <p class="text-body text-text-secondary mb-spacing-lg">
+          Meine Vision ist, dass immer mehr Menschen:
+        </p>
+
+        <div class="space-y-spacing-md bg-primary-light p-spacing-lg rounded-lg mb-spacing-lg">
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue text-h3 font-bold">✓</span>
+            <p class="text-body">Ihr Leben in Freiheit bewusst gestalten.</p>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue text-h3 font-bold">✓</span>
+            <p class="text-body">Sich selbst wieder besser verstehen und akzeptieren</p>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue text-h3 font-bold">✓</span>
+            <p class="text-body">Die Kontrolle über ihre Gewohnheiten und Entscheidungen zurückgewinnen</p>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue text-h3 font-bold">✓</span>
+            <p class="text-body">Die eigenen inneren Ressourcen entdecken und nutzen</p>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue text-h3 font-bold">✓</span>
+            <p class="text-body">Mit mehr Balance und Zuversicht in ihren Alltag gehen</p>
+          </div>
+          <div class="flex gap-spacing-md items-start">
+            <span class="text-accent-blue text-h3 font-bold">✓</span>
+            <p class="text-body">Ein Leben führen, das zu ihren Werten und Bedürfnissen passt</p>
+          </div>
+        </div>
+
+        <p class="text-body text-text-secondary">
+          Dies ist der Raum, den ich mit meinem Coaching schaffe, ein Ort, an dem Menschen wieder zu sich selbst finden können.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section container mx-auto">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-h2 font-bold mb-spacing-lg">Lass uns zusammenarbeiten</h2>
+        <p class="text-body text-text-secondary mb-spacing-lg">
+          Im Erstgespräch kannst du mich kennenlernen und wir schauen gemeinsam, wie ich dich am besten unterstützen kann.
+        </p>
+        <a
+          href={toBase("/kontakt")}
+          class="inline-block px-spacing-lg py-spacing-md bg-accent-blue text-white font-semibold rounded hover:bg-accent-blue-dark transition-colors"
+        >
+          Termin vereinbaren
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
