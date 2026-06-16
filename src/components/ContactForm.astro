@@ -1,12 +1,9 @@
 ---
-// Contact Form component - integrates with Formspree for form submissions
-export interface Props {
-  formId?: string;
-  buttonText?: string;
-}
-
-const { formId, buttonText = "Nachricht senden" } = Astro.props;
-const resolvedFormId = formId ?? import.meta.env.PUBLIC_FORMSPREE_FORM_ID ?? "mdodkeza";
+// Tally embed for the contact form. Form data is stored in the EU (Tally BV / Belgium).
+// Email notifications are delivered via SendGrid (DPF-certified).
+const formId = "yP7bbd";
+const embedSrc = `https://tally.so/embed/${formId}?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1`;
+const fallbackHref = `https://tally.so/r/${formId}`;
 const toBase = (path: string) => {
   const base = import.meta.env.BASE_URL.endsWith("/")
     ? import.meta.env.BASE_URL
@@ -15,111 +12,38 @@ const toBase = (path: string) => {
 };
 ---
 
-<form action={`https://formspree.io/f/${resolvedFormId}`} method="POST" class="max-w-2xl space-y-spacing-lg">
-  <input type="hidden" name="_subject" value="Neue Kontaktanfrage ueber meiklifecoaching.de" />
-  <input type="hidden" name="_language" value="de" />
+<div class="max-w-2xl">
+  <iframe
+    data-tally-src={embedSrc}
+    src={embedSrc}
+    loading="lazy"
+    width="100%"
+    height="600"
+    frameborder="0"
+    marginheight="0"
+    marginwidth="0"
+    title="Kontaktformular"
+    class="w-full border-0"
+  ></iframe>
 
-  <!-- Honeypot field for basic bot protection -->
-  <div class="hidden" aria-hidden="true">
-    <label for="website">Bitte dieses Feld leer lassen</label>
-    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
-  </div>
+  <noscript>
+    <p class="mt-spacing-md text-sm text-text-secondary">
+      Falls das Formular nicht geladen wird, öffnen Sie es bitte
+      <a href={fallbackHref} class="text-accent-blue hover:underline" target="_blank" rel="noopener noreferrer">direkt bei Tally</a>
+      oder schreiben Sie mir an
+      <a href="mailto:info@meik-gesundheit.de" class="text-accent-blue hover:underline">info@meik-gesundheit.de</a>.
+    </p>
+  </noscript>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-spacing-lg">
-    <!-- Name Field -->
-    <div class="flex flex-col">
-      <label for="name" class="text-sm font-semibold text-primary-dark mb-spacing-sm">
-        Name *
-      </label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        required
-        class="px-spacing-md py-spacing-sm border-2 border-primary-light rounded focus:outline-none focus:border-accent-blue transition-colors"
-        placeholder="Dein Name"
-      />
-    </div>
+  <p class="mt-spacing-md text-xs text-text-tertiary">
+    Mit dem Absenden des Formulars akzeptieren Sie die
+    <a href={toBase("/datenschutz")} class="text-accent-blue hover:underline">Datenschutzerklärung</a>.
+  </p>
+</div>
 
-    <!-- Email Field -->
-    <div class="flex flex-col">
-      <label for="email" class="text-sm font-semibold text-primary-dark mb-spacing-sm">
-        Email *
-      </label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        required
-        class="px-spacing-md py-spacing-sm border-2 border-primary-light rounded focus:outline-none focus:border-accent-blue transition-colors"
-        placeholder="deine.email@example.com"
-      />
-    </div>
-  </div>
-
-  <!-- Phone Field (optional) -->
-  <div class="flex flex-col">
-    <label for="phone" class="text-sm font-semibold text-primary-dark mb-spacing-sm">
-      Telefon
-    </label>
-    <input
-      type="tel"
-      id="phone"
-      name="phone"
-      class="px-spacing-md py-spacing-sm border-2 border-primary-light rounded focus:outline-none focus:border-accent-blue transition-colors"
-      placeholder="040/43 26 54 81"
-    />
-  </div>
-
-  <!-- Subject Field -->
-  <div class="flex flex-col">
-    <label for="subject" class="text-sm font-semibold text-primary-dark mb-spacing-sm">
-      Betreff *
-    </label>
-    <input
-      type="text"
-      id="subject"
-      name="subject"
-      required
-      class="px-spacing-md py-spacing-sm border-2 border-primary-light rounded focus:outline-none focus:border-accent-blue transition-colors"
-        placeholder="Dein Anliegen"
-    />
-  </div>
-
-  <!-- Message Field -->
-  <div class="flex flex-col">
-    <label for="message" class="text-sm font-semibold text-primary-dark mb-spacing-sm">
-      Nachricht *
-    </label>
-    <textarea
-      id="message"
-      name="message"
-      required
-      rows="6"
-      class="px-spacing-md py-spacing-sm border-2 border-primary-light rounded focus:outline-none focus:border-accent-blue transition-colors resize-none"
-      placeholder="Deine Nachricht..."
-    ></textarea>
-  </div>
-
-  <!-- Privacy Notice -->
-  <div class="flex items-start gap-spacing-md">
-    <input
-      type="checkbox"
-      id="privacy"
-      name="privacy"
-      required
-      class="mt-1 w-4 h-4 rounded accent-accent-blue"
-    />
-    <label for="privacy" class="text-xs text-text-secondary">
-      Ich bin mit der <a href={toBase("/datenschutz")} class="text-accent-blue hover:underline">Datenschutzvereinbarung</a> einverstanden.
-    </label>
-  </div>
-
-  <!-- Submit Button -->
-  <button
-    type="submit"
-    class="w-full md:w-auto px-spacing-lg py-spacing-md bg-accent-blue text-white font-semibold rounded hover:bg-accent-blue-dark transition-colors"
-  >
-    {buttonText}
-  </button>
-</form>
+<script is:inline src="https://tally.so/widgets/embed.js"></script>
+<script is:inline>
+  if (typeof window !== "undefined" && typeof window.Tally !== "undefined") {
+    window.Tally.loadEmbeds();
+  }
+</script>
